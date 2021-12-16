@@ -10,7 +10,7 @@ const Home = () => {
 	return (
 		<>
 			<Helmet>
-				<title>West CLOTHING</title>
+				<title>Fasho .Live</title>
 			</Helmet>
 			<div>
 				<Slider />

@@ -104,7 +104,7 @@ const Nav = ({ history }) => {
 	return (
 		<nav ref={Nav} className={`nav ${nav ? "active" : ""}`}>
 			<div className="logo">
-				<Link to="">West CLOTHING</Link>
+				<Link to="">Fasho .Live</Link>
 			</div>
 			<ul className="navLinks" ref={navLinks}>
 				<NavLink to="/" exact activeClassName="activlink">
