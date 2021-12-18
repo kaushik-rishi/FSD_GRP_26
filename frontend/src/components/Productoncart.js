@@ -32,8 +32,7 @@ const Productoncart = ({ product }) => {
 					<h2 className="productname">{product.name}</h2>
 				</Link>
 
-				<h2 className="priceproduct">{product.price}$</h2>
-				<h2 className="sandh">sold and shiped by FedEx</h2>
+				<h2 className="priceproduct">Rs {product.price}</h2>
 			</div>
 			<div className="qtyoption">
 				<Select
