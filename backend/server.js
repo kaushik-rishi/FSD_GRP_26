@@ -11,6 +11,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 
+// const dot = require("dotenv").config();
 connectDB();
 
 const app = express();
@@ -48,6 +49,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(
 	PORT,
 	console.log(
-		`server runingin ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+		`server runing in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
 	)
 );

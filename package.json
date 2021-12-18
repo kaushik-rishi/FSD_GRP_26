@@ -102,7 +102,8 @@
 		"use-callback-ref": "^1.2.5",
 		"use-sidecar": "^1.0.4",
 		"warning": "^4.0.3",
-		"yaml": "^1.10.0"
+		"yaml": "^1.10.0",
+		"yarn": "^1.22.17"
 	},
 	"scripts": {
 		"start": "node backend/server",
