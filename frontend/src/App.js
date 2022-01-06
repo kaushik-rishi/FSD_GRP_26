@@ -23,6 +23,7 @@ import Edituser from "./pages/Useredit/Edituser";
 import Products from "./pages/products/products";
 import Editproduct from "./pages/Editproduct/Editproduct";
 import Orders from "./pages/Orders/Orders";
+import DonateApparels from "./pages/Donation/Donate";
 
 const App = () => {
 	const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ const App = () => {
 									<Route path="/admin/productlist" component={Products} />
 									<Route path="/admin/orderlist" component={Orders} />
 									<Route path="/search/:keyword" component={Shop} />
-
+									<Route path={"/donate"} component={DonateApparels} />
 									<Route path="/admin/user/:id/edit" component={Edituser} />
 									<Route
 										path="/admin/product/:id/edit"
