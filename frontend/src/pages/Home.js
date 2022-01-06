@@ -14,11 +14,11 @@ const Home = () => {
 			</Helmet>
 			<div>
 				<Slider />
-				{/* <div className="cards">
+				<div className="cards">
 					<Cardscg title="Women" />
 					<Cardscg title="Men" />
 					<Cardscg title="Accessoires" />
-				</div> */}
+				</div>
 				<CgDiv />
 				<ProductsC />
 			</div>

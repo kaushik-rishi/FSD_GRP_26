@@ -59,10 +59,10 @@ const CardProduct = ({ product }) => {
 
 					<div className="productpricecard"> {`${product.price} Rs`}</div>
 					<div className="Rating">
-						<Rating
-							value={product.rating}
-							text={`${product.numReviews} reviews`}
-						/>
+						{/* <Rating
+						value={product.rating}
+						text={`${product.numReviews} reviews`}
+						/> */}
 					</div>
 				</div>
 

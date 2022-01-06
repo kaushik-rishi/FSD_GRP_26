@@ -2,9 +2,6 @@ import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 
-// @desc Auth user & get token
-// @route POST /api/users/login
-// @access Public
 const authUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
 
@@ -24,9 +21,6 @@ const authUser = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc Register a new user
-// @route POST /api/users
-// @access Public
 const registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password } = req.body;
 
@@ -57,9 +51,6 @@ const registerUser = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc Get user profile
-// @route GET /api/users/profile
-// @access Private
 const getUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 
@@ -76,9 +67,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc Update user profile
-// @route PUT /api/users/profile
-// @access Private
 const updateUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 
@@ -103,10 +91,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc Update user user
-// @route PUT /api/users/:id
-// @access Private/Admin
-
 const updateUser = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.params.id);
 
@@ -128,16 +112,11 @@ const updateUser = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc Get All users
-// @route GET /api/users
-// @access Private/admin
 const getUsers = asyncHandler(async (req, res) => {
 	const users = await User.find({});
 	res.json(users);
 });
-// @desc Get user by ID
-// @route GET /api/users/:id
-// @access Private/admin
+
 const getUserByID = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.params.id).select("-password");
 	if (user) {
@@ -148,9 +127,7 @@ const getUserByID = asyncHandler(async (req, res) => {
 		throw new Error("User not found");
 	}
 });
-// @desc Delete User
-// @route DELETE /api/users/:id
-// @access Private/admin
+
 const deleteUser = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.params.id);
 	if (user) {

@@ -33,7 +33,7 @@ const Footer = () => {
 				<div className="fooHelp">
 					<h1>Help</h1>
 					<ul>
-						<li>Tracke Order</li>
+						<li>Track Order</li>
 						<li>Returns</li>
 						<li>Shipping</li>
 						<li>FAQs</li>
@@ -99,9 +99,6 @@ const Footer = () => {
 				<div className="paragraphFooter">
 					<p>This is a part of FSD-2 Project by Group-26</p>
 					<p>Chetan ... Bharghav ... Varshith ... Aatharva</p>
-					{/* <Link to=""></Link>
-					<Link to=""></Link> */}
-					{/* <Link to="">Aatharva</Link> */}
 				</div>
 			</footer>
 		</div>
