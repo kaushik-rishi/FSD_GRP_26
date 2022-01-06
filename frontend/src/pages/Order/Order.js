@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react'
 import axios from "axios";
-import { PayPalButton } from 'react-paypal-button-v2';
 import {Link} from 'react-router-dom'
 import { Helmet } from 'react-helmet';
 
@@ -102,7 +101,7 @@ const Order = ({match,history}) => {
                     <p>
                         <strong>Method: </strong>
                         {order.paymentMethod}
-                        {order.isPaid ? <div className = 'paid'>PAID AT {order.paidAt}</div> : <div className = 'notpaid'>NOT PAID YET</div>}
+                        {order.isPaid ? <div className = 'paid'>PAID AT {order.paidAt}</div> : <div className = 'notpaid'></div>}
                     </p>
                 </div>
                       <hr className= 'hr' />
@@ -115,7 +114,7 @@ const Order = ({match,history}) => {
                             <p key = {index}><span className="color-name"><Link to={`/product/${item.product}`}>{item.name}</Link></span> <b>{item.qty} x ${item.price} = ${item.qty * item.price}</b><hr className= 'hr' /></p>
                           
 
-                        ))}
+                        }
                             
                     </div>
                    }    
@@ -140,23 +139,7 @@ const Order = ({match,history}) => {
                         </div>
                         <div className = 'bottominfos'>
                         <h1 className = 'orderid'>Order : {order._id}</h1>
-                        {!order.isPaid && (
-                            <>
-                            {loadingpay && <div className='loading-product'>
-                                            <HashLoader   color={"#1e1e2c"}  loading={loading} size={50} />
-                                           </div> }
-                            {!sdkReady ? <div className='loading-product'>
-                                            <HashLoader   color={"#1e1e2c"}  loading={loading} size={50} />
-                                           </div> :
-                                           <div className = 'paypalbuttons'>
-                                           <PayPalButton className = 'buttonsp' amount = {order.totalPrice} onSuccess = {successpaymenthandler}/>
-                                           </div>}
-                            </>
-                        )}
-                        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered &&(
-                            <Button   height="40px" width = "200px"
-                            size = "lg" onClick = {deliverhandler} leftIcon = {<IoMdDoneAll size = '16' />} colorScheme ='blue' size="xs" >DELIVERED</Button>
-                        )}
+                        
 
                         </div>
 

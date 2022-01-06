@@ -24,7 +24,9 @@ const Checkout = ({ history }) => {
 	const [carddetails, setcarddetails] = useState(true);
 	const handleorder = (e) => {
 		e.preventDefault();
+		console.log("here")
 		dispatch(saveAddressshipping({ address, city, postalCode, country }));
+		console.log(Payment)
 		dispatch(savepaymentmethod(Payment));
 		history.push("/placeorder");
 	};
