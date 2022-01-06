@@ -80,10 +80,14 @@ const ProductsC = ({ match, history }) => {
 					{Cg ? Cg : keyword ? "*" + keyword + "* Search" : "All"} Products
 				</h1>
 				<div className="filtersbtn ">
-					{/* <button className = {`filterbtn ${showfilter ? 'activebtn' : ''}` }  
-            onClick = {filterfunc} > {showfilter ?  <IoMdClose  size = '20'/>: <BsFilter size = '20'/> } 
-            Filter
-            </button> */}
+					<button
+						className={`filterbtn ${showfilter ? "activebtn" : ""}`}
+						onClick={filterfunc}
+					>
+						{" "}
+						{showfilter ? <IoMdClose size="20" /> : <BsFilter size="20" />}
+						Filter
+					</button>
 
 					<button
 						className={`searchbtn ${showsearch ? "activebtn" : ""}`}

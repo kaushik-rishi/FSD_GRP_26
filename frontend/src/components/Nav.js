@@ -110,13 +110,17 @@ const Nav = ({ history }) => {
 				<NavLink to="/" exact activeClassName="activlink">
 					<li>Home</li>
 				</NavLink>
-				{/* <NavLink to="/shop" activeClassName='activlink' ><li>Shop</li></NavLink> */}
+				<NavLink to="/shop" activeClassName="activlink">
+					<li>Shop</li>
+				</NavLink>
 				<NavLink to="/contactus" activeClassName="activlink">
 					<li>Contact us</li>
 				</NavLink>
-				{/* <NavLink to="/about" activeClassName="activlink">
-					<li>About</li>
-				</NavLink> */}
+				{
+					<NavLink to="/about" activeClassName="activlink">
+						<li>About</li>
+					</NavLink>
+				}
 			</ul>
 			<div className="burger" ref={Buric} onClick={onBurgActive}>
 				<div className="line1"></div>
@@ -124,20 +128,20 @@ const Nav = ({ history }) => {
 				<div className="line3"></div>
 			</div>
 			<div className="rightComp" ref={rightItems}>
-				{/* <div ref={searchRef} className="search">
+				<div ref={searchRef} className="search">
 					<Route render={({ history }) => <Searchnav history={history} />} />
 				</div>
 
 				{!showSearchIc && (
 					<MdSearch className="iconSearch" size="26" onClick={onSeacrhFun} />
-				)} */}
-				{/* <Link to="/cart">
+				)}
+				<Link to="/cart">
 					{" "}
 					<RiShoppingCart2Line className="iconCart" size="26" />
 					{userInfo && !userInfo.isAdmin && (
 						<div className="dotcart">{incart}</div>
 					)}
-				</Link> */}
+				</Link>
 
 				{userInfo ? (
 					<div className="ic_sett_dis">

@@ -109,29 +109,38 @@ const Productpage = ({ history, match }) => {
 										))}
 									</div>
 								</div>
-								{/* <div className = "img-select">
-            <div className = "img-item">
-              <a href = "#" data-id = "1">
-                <Image  objectFit="cover" boxSize = '200px' src = {product.images[0]} alt = "shoe image"/>
-
-
-              </a>
-            </div>
-            <div className = "img-item">
-              <a href = "#" data-id = "2">
-                <Image  objectFit="cover" boxSize = '200px' src = {product.images[1]} alt = "shoe image"/>
-
-              </a>
-            </div>
-            <div className = "img-item">
-              <a href = "#" data-id = "3">
-                <Image  objectFit="cover"  boxSize = '200px' src = {product.images[2]} alt = "shoe image"/>
-
-
-              </a>
-            </div>
-        
-          </div> */}
+								<div className="img-select">
+									<div className="img-item">
+										<a href="#" data-id="1">
+											<Image
+												objectFit="cover"
+												boxSize="200px"
+												src={product.images[0]}
+												alt="shoe image"
+											/>
+										</a>
+									</div>
+									<div className="img-item">
+										<a href="#" data-id="2">
+											<Image
+												objectFit="cover"
+												boxSize="200px"
+												src={product.images[1]}
+												alt="shoe image"
+											/>
+										</a>
+									</div>
+									<div className="img-item">
+										<a href="#" data-id="3">
+											<Image
+												objectFit="cover"
+												boxSize="200px"
+												src={product.images[2]}
+												alt="shoe image"
+											/>
+										</a>
+									</div>
+								</div>
 							</div>
 
 							<div className="product-content">
