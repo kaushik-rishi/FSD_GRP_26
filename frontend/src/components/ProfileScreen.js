@@ -243,7 +243,7 @@ const ProfileScreen = ({ location, history }) => {
 													<Td>
 														{order.isPaid
 															? order.paidAt.substring(0, 10)
-															: "Not Paid Yet"}
+															: ""}
 													</Td>
 													<Td>
 														{order.isDelivered

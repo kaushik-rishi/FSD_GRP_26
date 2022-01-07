@@ -16,7 +16,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Another product",
+		name: "Black Shoe",
 		images: [
 			"https://i.imgur.com/vN2y3Sh.jpg",
 			"https://i.imgur.com/vN2y3Sh.jpg",
@@ -32,7 +32,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Example",
+		name: "Green Shoe",
 		images: [
 			"https://i.imgur.com/X3sshLQ.jpg",
 			"https://i.imgur.com/X3sshLQ.jpg",
@@ -48,7 +48,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Buy this please",
+		name: "Leather watch black",
 		images: [
 			"https://i.imgur.com/7AIhl9Y.jpg",
 			"https://i.imgur.com/7AIhl9Y.jpg",
@@ -64,7 +64,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "lorem lipsum",
+		name: "Rain coat jacket",
 		images: [
 			"https://i.imgur.com/26Vuebt.jpg",
 			"https://i.imgur.com/26Vuebt.jpg",
@@ -80,7 +80,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Some title",
+		name: "SweatShirt",
 		images: [
 			"https://i.imgur.com/FqUJLMq.jpg",
 			"https://i.imgur.com/3k5mDDN.jpg",
@@ -96,7 +96,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Some Product",
+		name: "Blue Jacket",
 		images: [
 			"https://i.imgur.com/qU9avme.jpg",
 			"https://i.imgur.com/usDXEF8.jpg",
@@ -112,7 +112,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Women handbag",
+		name: "Red T-Shirt",
 		images: [
 			"https://i.imgur.com/2zcsO2C.jpg",
 			"https://i.imgur.com/PsxB6lI.jpg",
@@ -120,7 +120,7 @@ const products = [
 		],
 		description:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		category: ["Jacket"],
+		category: ["Men"],
 		sizes: ["S", "XS"],
 		price: 999,
 		countInStock: 9,
@@ -128,7 +128,7 @@ const products = [
 		numReviews: 0,
 	},
 	{
-		name: "Some Product we",
+		name: "Women Handbag",
 		images: [
 			"https://i.imgur.com/QN2BSdJ.jpg",
 			"https://i.imgur.com/XPb2MDt.jpg",

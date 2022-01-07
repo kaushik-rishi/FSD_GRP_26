@@ -116,11 +116,12 @@ const Nav = ({ history }) => {
 				<NavLink to="/contactus" activeClassName="activlink">
 					<li>Contact us</li>
 				</NavLink>
-				{
-					<NavLink to="/about" activeClassName="activlink">
-						<li>About</li>
-					</NavLink>
-				}
+				<NavLink to="/about" activeClassName="activlink">
+					<li>About</li>
+				</NavLink>
+				<NavLink to="/donate" activeClassName="activlink">
+					<li>Donation Form</li>
+				</NavLink>
 			</ul>
 			<div className="burger" ref={Buric} onClick={onBurgActive}>
 				<div className="line1"></div>
