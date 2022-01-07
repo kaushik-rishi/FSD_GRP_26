@@ -97,7 +97,7 @@ const Footer = () => {
 				</div>
 
 				<div className="paragraphFooter">
-					<p>An initiative by  by Group-26 for FSD-2 Project</p>
+					<p>An initiative by by Group-26 for FSD-2 Project</p>
 					<p>Chetan | Bharghav | Varshith | Atharva</p>
 				</div>
 			</footer>

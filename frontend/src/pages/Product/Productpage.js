@@ -148,10 +148,10 @@ const Productpage = ({ history, match }) => {
 								<Link to="/shop" className="product-link">
 									visit our store
 								</Link>
-								<Rating
+								{/* <Rating
 									value={product.rating}
 									text={`${product.numReviews} reviews`}
-								/>
+								/> */}
 								<div className="product-price">
 									<p className="last-price">
 										Old Price:{" "}
@@ -261,7 +261,7 @@ const Productpage = ({ history, match }) => {
 						</div>
 					</div>
 				)}
-				<div className="REVIEWS">
+				{/* <div className="REVIEWS">
 					<h1>Reviews :</h1>
 					{product.reviews.length === 0 && <h2>NO REVIEWS</h2>}
 					<div>
@@ -306,7 +306,7 @@ const Productpage = ({ history, match }) => {
 							)}
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
