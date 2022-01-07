@@ -66,9 +66,18 @@
 }
 .login-content {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   text-align: center;
+}
+.login-content form{
+  width: 600px;
+}
+
+@media screen and (max-width: 1000px){
+  .login-content form {
+    width: 300px;
+  }
 }
 .input-div.entry {
   position: relative;
@@ -107,8 +116,7 @@
 }
 
 .reachEnd{
-  align-self: flex-end;
-  justify-content: space-between;
+  justify-content: left;
 }
 .button4{
   display:inline-block;

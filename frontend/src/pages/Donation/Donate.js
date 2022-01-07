@@ -1,6 +1,7 @@
 import React, {useState, useEffect,useRef} from 'react'
 import './Donate.css'
 import { Helmet } from 'react-helmet';
+import axios from "axios"
 import { Link } from "react-router-dom";
 import { Form, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,10 @@ import { IoIosArrowDown } from "react-icons/all";
 import HashLoader from "react-spinners/HashLoader";
 
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 	// Button,
   ButtonGroup,
 	Input,
@@ -41,12 +46,12 @@ const DonateApparels = ({history}) => {
 	const [message, setMessage] = useState(null);
 	const [isEditablename, setisEditablename] = useState(false);
 	const [isEditableemail, setisEditableemail] = useState(false);
-  const [value, setValue] = React.useState('isReusable')
+  const [value, setValue] = React.useState('')
   const [desc, setDesc] = React.useState('')
 	const [guide, setGuide] = useState("")
 	const nameinput = useRef(null);
 	const emailinput = useRef(null);
-
+  const [formOk, setFormOk] = useState(false);
 	const dispatch = useDispatch();
 
 	const userDetails = useSelector((state) => state.userDetails);
@@ -61,6 +66,12 @@ const DonateApparels = ({history}) => {
 
 	const { success } = userUpdateProfile;
 
+  const clearState = () => {
+    setName(user.name)
+    setEmail(user.email)
+    setValue("")
+    setDesc("")
+  };
   const guideData = [
     {
       gcategory: 'apparel',
@@ -123,13 +134,40 @@ const DonateApparels = ({history}) => {
 		// } else {
 		// 	dispatch(updateUserProfile({ id: user._id, name, email, password }));
 		// }
-    const t = (e.target.name)==="name"
-    const p =""
-    if(t)
+    if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="" || value==="")
+      setMessage("We kindly request you to fill all the details as it helps us in finding more solutions to recycle donated products.")
+    else
     {
-      p = e.target.value
+      // console.log(e.target[0].value)
+      // console.log(e.target[1].value)
+      // console.log(e.target[2].value)
+      // console.log(e.target[3].value)
+      // console.log(e.target[4].value)
+      // console.log(e.target[5].value)
+      // console.log(value)
+      axios.post("http://localhost:4000/dnations",{
+        name: e.target[0].value,
+        email: e.target[1].value,
+        dcat: e.target[4].value,
+        dtitle: e.target[3].value,
+        ddesc: e.target[5].value,
+        dstatus: value
+      }).then((res)=>{
+          // console.log("logged in")
+          // history.push("/contact");
+          // history.push('/home') 
+          setFormOk(true)
+          const frm = document.getElementsByName("myForm")[0]
+          frm.reset()
+          clearState()
+          setTimeout(() => {
+            history.push('/donations')
+          }, 6000);
+      }).catch((err)=>{
+          console.log(err)
+          // store.dispatch({type:"loginFail"})
+      })
     }
-    console.log(e.target[3].value)
 	};
 	const inputs = document.querySelectorAll(".inputa");
 
@@ -162,7 +200,11 @@ const DonateApparels = ({history}) => {
     const inputDesc = e.target.value
     setDesc(inputDesc)
   }
-    
+  const radioChange = (val) => {
+    // console.log(val)
+    setValue(val)
+    // console.log(value)
+  }
   const guideChange = (gkey) => {
     const gdata = guideData.find(key => key.gcategory === gkey)
     // console.log(gdata)
@@ -171,7 +213,7 @@ const DonateApparels = ({history}) => {
     return (
         <div className = 'donateApparels'>
           <Helmet>
-            <title>Donate Apparels</title>
+            <title>Donate Us</title>
           </Helmet>
           <div>
               <div className='dsect'>
@@ -181,14 +223,14 @@ const DonateApparels = ({history}) => {
                 <h2>Did you know?</h2>
                 <ul className='du'>
                     <li>The global cotton industry produces 25 million tonnes per year at a vast land, chemical and water cost. </li>
-                    <li>Fashion contributes approximately 8% to global emissions and it is expected to increase by 45% come 2030.</li>
+                    <li>Fashion contributes approximately 8% to global emissions and is expected to rise by 45% come 2030.</li>
                 </ul>
               </div>
               <div className='dsect'>
                 <h1>Donate us ❤️</h1>
                 <p>We at Fasho.Live work to reduce the Climate Change by making accessible a plethora of Reusable Fashion Products donated by our kind-hearted Environmentalists 🌎 and RRR ♻️ Enthusiasts. Support our virtuous efforts by making a donation because every donation to us makes an impact in reducing the Climate Change.</p>
                   <div className="login-content">
-                    <form onSubmit={submitHandler}
+                    <form onSubmit={submitHandler} name="myForm"
                     >
                       {/* <Image src={avatarRegister} /> */}
 
@@ -330,7 +372,7 @@ const DonateApparels = ({history}) => {
                       
                       <div className='status'>
                         <p>Status</p>
-                        <RadioGroup onChange={setValue} value={value}>
+                        <RadioGroup onChange={(value) => radioChange(value)} value={value}>
                           <Stack direction='row' className='reachEnd'>
                             <Radio value='isReusable'>Can be reused</Radio>
                             <Radio value='needsProc'>Can be processed</Radio>
@@ -355,6 +397,32 @@ const DonateApparels = ({history}) => {
                       <input type="submit" className="btna2 bta" 
                       value="Submit" 
                       />
+                      {/* {message && <h4 className="Message">{message}</h4>} */}
+                      {formOk?(
+                        <Alert
+                          status='success'
+                          variant='subtle'
+                          flexDirection='column'
+                          alignItems='center'
+                          justifyContent='center'
+                          textAlign='center'
+                          height='200px'
+                        >
+                          <AlertIcon boxSize='40px' mr={0} />
+                          <AlertTitle mt={4} mb={1} fontSize='lg'>
+                            Donation request submitted successfully!
+                          </AlertTitle>
+                          <AlertDescription maxWidth='sm'>
+                            Thanks for submitting your application. Our team will reach out to your address. We are redirecting you to our donations page.
+                          </AlertDescription>
+                        </Alert>
+                      ):(
+                        // <Alert status='error'>
+                        //   <AlertIcon />
+                        //   There was an error processing your request
+                        // </Alert>
+                        <h4 className="Message">{message}</h4>
+                      )}
                   </form>
                 </div>
               </div>

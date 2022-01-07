@@ -24,6 +24,7 @@ import Products from "./pages/products/products";
 import Editproduct from "./pages/Editproduct/Editproduct";
 import Orders from "./pages/Orders/Orders";
 import DonateApparels from "./pages/Donation/Donate";
+import GetDonations from './pages/Donation/Donations'
 
 const App = () => {
 	const [loading, setLoading] = useState(false);
@@ -69,7 +70,7 @@ const App = () => {
 										path="/admin/product/:id/edit"
 										component={Editproduct}
 									/>
-
+									<Route path={"/donations"} component={GetDonations} />
 									<Route component={NotFoundPage} />
 								</Switch>
 								<Footer />
