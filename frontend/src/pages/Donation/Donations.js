@@ -92,8 +92,8 @@ const GetDonations = ({history}) => {
                 {/* <CardPro/> */}
                 <br/>
                 <CardRow />
-                <br/>
-                <CardRow />
+                {/* <br/>
+                <CardRow /> */}
                 {/* <div class="row">
                   <div class="column">
                     <CardPro/>
