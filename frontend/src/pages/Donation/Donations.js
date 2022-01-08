@@ -4,8 +4,10 @@ import { Helmet } from 'react-helmet';
 import PaginatedTable from '../../components/PaginatedTable';
 import PaginatedTable2 from '../../components/PaginatedTable2';
 import CardPro from '../../components/Cards'
+import CardRow from '../../components/CardRow';
 import { Col, Row } from 'antd';
 import axios from "axios"
+import ReProducts from '../../components/ReProducts';
 // import { Link } from "react-router-dom";
 // import { Form, Image } from "react-bootstrap";
 // import { useDispatch, useSelector } from "react-redux";
@@ -88,11 +90,26 @@ const GetDonations = ({history}) => {
                 <h1>Recycle work in progress 🚧</h1>
                 <p>Here are the products received from our donors that will be recycled with the help of our team and made available for purchase.</p>
                 {/* <CardPro/> */}
-                <CardPro/>
+                <br/>
+                <CardRow />
+                <br/>
+                <CardRow />
+                {/* <div class="row">
+                  <div class="column">
+                    <CardPro/>
+                  </div>
+                  <div class="column">
+                    <CardPro/>  
+                  </div>
+                  <div class="column">
+                    <CardPro/>
+                  </div>
+                </div> */}
               </div>
               <div className='dsect'>
                 <h1>Reproduced Merchandise ♻️</h1>
                 <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p>
+                {/* <ReProducts/> */}
               </div>
           </div>
                 

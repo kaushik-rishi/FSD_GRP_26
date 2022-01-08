@@ -103,6 +103,6 @@ const PaginatedTable2 = ({productRows}) => {
     }
     
     // {console.log(data)}
-    return( <Table columns={columns} dataSource={data2} onChange={onChange} scroll={{y: 240 }} />)
+    return( <Table columns={columns} dataSource={data2} onChange={onChange} scroll={{y: 370 }} />)
 }
 export default PaginatedTable2
