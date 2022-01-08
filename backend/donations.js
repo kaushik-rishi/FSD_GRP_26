@@ -2,7 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import fs from 'fs'
 import cors from 'cors'
-// import donations from './data/donations.json'
+import { format } from 'date-fns'
+
 var app = express(); //include the module .this give us the capability the read the body.
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -17,6 +18,9 @@ app.get("/dnations", function (request, response) {
   var obj = JSON.parse(fs.readFileSync('./data/donations.json'));
   console.log(obj)
   response.status(200).json(obj);
+  const pd = new Date(Date.now())
+  console.log(format(pd, 'dd.MM.yyyy HH:mm:ss'))
+  console.log(format(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss'))
   return 
 })
 app.post("/dnations", function (request, response) {
@@ -58,8 +62,9 @@ app.post("/dnations", function (request, response) {
     return;
   }
   var obj = JSON.parse(fs.readFileSync('./data/donations.json'));
-  console.log(obj)
-  obj.push({"name":uname,"email":email,"cat":cat,"title":title,"desc":udesc,"stats":stats});
+  const keyC = Object.keys(obj).length + 1
+  var pdate = new Date(Date.now())
+  obj.push({"key":keyC,"date":pdate,"name":uname,"email":email,"cat":cat,"title":title,"desc":udesc,"stats":stats});
   console.log(obj)
   const jsonStr = JSON.stringify(obj);
   fs.writeFile('./data/donations.json', jsonStr, (err) => {

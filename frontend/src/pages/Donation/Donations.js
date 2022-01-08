@@ -1,6 +1,11 @@
 import React, {useState, useEffect,useRef} from 'react'
 // import './Donate.css'
 import { Helmet } from 'react-helmet';
+import PaginatedTable from '../../components/PaginatedTable';
+import PaginatedTable2 from '../../components/PaginatedTable2';
+import CardPro from '../../components/Cards'
+import { Col, Row } from 'antd';
+import axios from "axios"
 // import { Link } from "react-router-dom";
 // import { Form, Image } from "react-bootstrap";
 // import { useDispatch, useSelector } from "react-redux";
@@ -36,20 +41,54 @@ import {
 import { AiOutlineEdit } from "react-icons/ai";
 
 const GetDonations = ({history}) => {
-    
+    const [donateProds, setDonateProds] = useState([])
+    // const [loading, setLoading] = useState(false);
+    // const populateData = function(props){
+    //   setDonateProds(props)
+    // }
+    useEffect(() => {
+      // GET request using axios inside useEffect React hook
+      axios.get('http://localhost:4000/dnations')
+          .then(response => setDonateProds(response.data));
+
+  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    }, []);
+    // const componentDidMount = async function(){
+    //     await axios.get("http://localhost:4000/dnations").then((res)=>{
+    //         console.log(res.data)
+    //         populateData(res.data)
+    //         console.log(donateProds)
+    //     }).catch((err)=>{
+    //         console.log(err)
+    //     })
+    //     // try {
+    //     //     const response = await axios.get("http://localhost:4000/dnations") //using data destructuring to get data from the promise object
+    //     //     // console.log(response)
+    //     //     return response.data
+    //     // }
+    //     // catch (error) {
+    //     //     console.log(error);
+    //     // }
+    // }
     return (
         <div className = 'donateApparels'>
           <Helmet>
-            <title>Donations Information</title>
+            <title>Donation Information Desk</title>
           </Helmet>
           <div>
               <div className='dsect'>
                 <h1>Reuable products 🔄</h1>
-                <p>Here are the products we received from our generous donors recently. We'll be refurbishing them soon after receiving in a span of 7 days and make them available for resale.</p>
+                <p>Here is the list of products we are going to acquire from our generous donors. We'll be refurbishing the products on receiving them in a week's duration and make them available for resale after clearing all the technicalities.</p>
+                {/* <PaginatedTable/> */}
+                <br />
+                {/* {showData()} */}
+                <PaginatedTable2 productRows={donateProds}/>
               </div>
               <div className='dsect'>
                 <h1>Recycle work in progress 🚧</h1>
                 <p>Here are the products received from our donors that will be recycled with the help of our team and made available for purchase.</p>
+                {/* <CardPro/> */}
+                <CardPro/>
               </div>
               <div className='dsect'>
                 <h1>Reproduced Merchandise ♻️</h1>

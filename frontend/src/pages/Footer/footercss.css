@@ -84,7 +84,7 @@ footer .paragraphFooter {
   justify-items: center;
 }
 .paragraphFooter p {
-  grid-column: 1/4;
+  grid-column: 4/6;
   justify-self: center;
 }
 .paragraphFooter > *:hover {
