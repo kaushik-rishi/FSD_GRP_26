@@ -67,7 +67,7 @@ const Footer = () => {
 							<Stack spacing={3}>
 								<Input
 									variant="flushed"
-									placeholder="email@example.com"
+									placeholder="contact@fasho.live"
 									size="10"
 									width="200px"
 								/>
