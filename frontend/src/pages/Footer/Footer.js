@@ -61,20 +61,12 @@ const Footer = () => {
 				</div>
 
 				<div className="footerNews">
-					<h1>Newsletter</h1>
+					<h1>Project Description</h1>
 					<ul>
 						<li>
-							<Stack spacing={3}>
-								<Input
-									variant="flushed"
-									placeholder="email@example.com"
-									size="10"
-									width="200px"
-								/>
-							</Stack>
-						</li>
-						<li>
-							<button className="footerBtn">Subscribe</button>
+						<a href="https://docs.google.com/presentation/d/1Lp5-pM9uUpfPUTf5lPPL0-SQCqK5Pv3yR9dL-A6z-2A/edit#slide=id.g107e31f380f_1_4">
+						<button className="footerBtn">Link</button>
+  </a> 
 						</li>
 					</ul>
 				</div>
