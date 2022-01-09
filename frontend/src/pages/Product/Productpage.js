@@ -158,7 +158,7 @@ const Productpage = ({ history, match }) => {
 										<span>Rs {product.price + product.price * 0.5}</span>
 									</p>
 									<p className="new-price">
-										New Price: <span>Rs {product.price} (5%)</span>
+										New Price: <span>Rs {product.price} (35%)</span>
 									</p>
 								</div>
 
