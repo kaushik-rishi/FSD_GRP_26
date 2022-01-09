@@ -109,8 +109,9 @@
 	"scripts": {
 		"start": "node backend/server",
 		"server": "nodemon backend/server",
+		"donate": "node backend/donations",
 		"client": "npm start --prefix frontend",
-		"dev": "concurrently \"npm run server\" \"npm run client\" ",
+		"dev": "concurrently \"npm run server\" \"npm run client\" \"npm run donate\" ",
 		"data:import": "node backend/seeder",
 		"data:destroy": "node backend/seeder -d"
 	},
