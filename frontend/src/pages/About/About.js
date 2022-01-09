@@ -41,7 +41,7 @@ const About = () => {
 							className="mImage"
 							boxSize="400px"
 							objectFit="cover"
-							src="https://media.istockphoto.com/photos/smiling-man-outdoors-in-the-city-picture-id1179420343?b=1&k=20&m=1179420343&s=170667a&w=0&h=xBR4ZQbRC1Ub_5u_pZnG-omh0k-W8QDQgXxda5MCDT8="
+							src="https://varshith-k.github.io/bookmySeva/img/atharva.jpeg"
 							alt="Segun Adebayo"
 						/>
 					</div>
