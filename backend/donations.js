@@ -29,7 +29,6 @@ app.post("/dnations", function (request, response) {
   let cat = request.body.dcat;
   let title = request.body.dtitle;
   let udesc = request.body.ddesc;
-  let stats = request.body.dstatus;
 //   console.log(donations)
   if(!uname) {
       response.status(400).json("Empty name request");
@@ -56,15 +55,10 @@ app.post("/dnations", function (request, response) {
 // stop further execution in this callback
     return;
   }
-  if(!stats) {
-    response.status(400).json("Object status required");
-// stop further execution in this callback
-    return;
-  }
   var obj = JSON.parse(fs.readFileSync('./data/donations.json'));
   const keyC = Object.keys(obj).length + 1
   var pdate = new Date(Date.now())
-  obj.push({"key":keyC,"date":pdate,"name":uname,"email":email,"cat":cat,"title":title,"desc":udesc,"stats":stats});
+  obj.push({"key":keyC,"date":pdate,"name":uname,"email":email,"cat":cat,"title":title,"desc":udesc});
   console.log(obj)
   const jsonStr = JSON.stringify(obj);
   fs.writeFile('./data/donations.json', jsonStr, (err) => {

@@ -46,7 +46,6 @@ const DonateApparels = ({history}) => {
 	const [message, setMessage] = useState(null);
 	const [isEditablename, setisEditablename] = useState(false);
 	const [isEditableemail, setisEditableemail] = useState(false);
-  const [value, setValue] = React.useState('')
   const [desc, setDesc] = React.useState('')
 	const [guide, setGuide] = useState("")
 	const nameinput = useRef(null);
@@ -69,7 +68,6 @@ const DonateApparels = ({history}) => {
   const clearState = () => {
     setName(user.name)
     setEmail(user.email)
-    setValue("")
     setDesc("")
   };
   const guideData = [
@@ -129,33 +127,17 @@ const DonateApparels = ({history}) => {
   
   const submitHandler = function (e) {
 		e.preventDefault();
-		// if (password !== confirmPassword) {
-		// 	setMessage("Password do not match");
-		// } else {
-		// 	dispatch(updateUserProfile({ id: user._id, name, email, password }));
-		// }
-    if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="" || value==="")
+    if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="")
       setMessage("We kindly request you to fill all the details as it helps us in finding more solutions to recycle donated products.")
     else
     {
-      // console.log(e.target[0].value)
-      // console.log(e.target[1].value)
-      // console.log(e.target[2].value)
-      // console.log(e.target[3].value)
-      // console.log(e.target[4].value)
-      // console.log(e.target[5].value)
-      // console.log(value)
       axios.post("http://localhost:4000/dnations",{
         name: e.target[0].value,
         email: e.target[1].value,
         dcat: e.target[4].value,
         dtitle: e.target[3].value,
         ddesc: e.target[5].value,
-        dstatus: value
       }).then((res)=>{
-          // console.log("logged in")
-          // history.push("/contact");
-          // history.push('/home') 
           setFormOk(true)
           const frm = document.getElementsByName("myForm")[0]
           frm.reset()
@@ -165,7 +147,6 @@ const DonateApparels = ({history}) => {
           }, 6000);
       }).catch((err)=>{
           console.log(err)
-          // store.dispatch({type:"loginFail"})
       })
     }
 	};
@@ -199,11 +180,6 @@ const DonateApparels = ({history}) => {
   const handleInputChange = (e) => {
     const inputDesc = e.target.value
     setDesc(inputDesc)
-  }
-  const radioChange = (val) => {
-    // console.log(val)
-    setValue(val)
-    // console.log(value)
   }
   const guideChange = (gkey) => {
     const gdata = guideData.find(key => key.gcategory === gkey)
@@ -370,15 +346,6 @@ const DonateApparels = ({history}) => {
                         </div>
                       </div> */}
                       
-                      <div className='status'>
-                        <p>Status</p>
-                        <RadioGroup onChange={(value) => radioChange(value)} value={value}>
-                          <Stack direction='row' className='reachEnd'>
-                            <Radio value='isReusable'>Can be reused</Radio>
-                            <Radio value='needsProc'>Can be processed</Radio>
-                          </Stack>
-                        </RadioGroup>
-                      </div>
                       {/* <div className="input-div passconf">
                         <div className="i">
                           <i className="fas fa-lock"></i>

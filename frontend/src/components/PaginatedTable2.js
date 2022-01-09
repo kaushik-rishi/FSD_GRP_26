@@ -43,11 +43,6 @@ const PaginatedTable2 = ({productRows}) => {
             render: text => refCMap[text]
         },
         {
-            title: 'Status',
-            dataIndex: 'stats',
-            render: text => text==="isReusable"?"Reusable":"Needs Processing"
-        },
-        {
             title: 'Donor',
             dataIndex: 'name',
             render: text => text[0].toUpperCase() + text.slice(1)

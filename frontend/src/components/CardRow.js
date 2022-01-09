@@ -9,6 +9,7 @@ import './cardsass.scss'
 function CardRow(){
     return(
         <>
+            <br/>
             <div className="wrapper">
                 <Card2
                     img={imgs}
@@ -48,6 +49,7 @@ function CardRow(){
                     description="Sherwani gets a royal treatment to showcase its glory another time"
                 />
             </div>
+            <br/>
         </>
     )
 }

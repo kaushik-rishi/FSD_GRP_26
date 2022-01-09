@@ -90,7 +90,6 @@ const GetDonations = ({history}) => {
                 <h1>Recycle work in progress 🚧</h1>
                 <p>Here are the products received from our donors that will be recycled with the help of our team and made available for purchase.</p>
                 {/* <CardPro/> */}
-                <br/>
                 <CardRow />
                 {/* <br/>
                 <CardRow /> */}
@@ -110,6 +109,7 @@ const GetDonations = ({history}) => {
                 <h1>Reproduced Merchandise ♻️</h1>
                 <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p>
                 {/* <ReProducts/> */}
+                <CardRow />
               </div>
           </div>
                 
