@@ -5,6 +5,7 @@ import axios from "axios"
 import { Link } from "react-router-dom";
 import { Form, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import ReProducts from '../../components/ReProducts';
 // import avatarRegister from "../../components/img/avatarRegister"
 // import addUs from "../../components/img/new.svg";
 // import wave from "../../components/img/wavev.png";
@@ -420,8 +421,9 @@ const DonateApparels = ({history}) => {
                 {/* <p>Take data from the database and show the results only when a box is clicked</p> */}
               </div>
               <div className='dsect'>
-                <h1>Reproduced Merchandise ♻️</h1>
-                <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p>
+                {/* <h1>Reproduced Merchandise ♻️</h1>
+                <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p> */}
+                <ReProducts/>
               </div>
           </div>
         </div>

@@ -60,90 +60,7 @@ const GetDonations = ({history}) => {
               .then(response => setRepData(response.data));
     }, []);
   // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    // const recData = [
-    //   [
-    //     {
-    //         ckey: "1",
-    //         cimg: "denimOld.png",
-    //         ctitle: "Old Jeans getting Cleaned",
-    //         cdesc: "These jeans get the cleanest bath after a long time."
-    //     },
-    //     {
-    //         ckey: "2",
-    //         cimg: "brokenLuggage.jpg",
-    //         ctitle: "Pummelled luggage Revives",
-    //         cdesc: "Our team brings back the life of a badly crushed luggage."
-    //     },
-    //     {
-    //         ckey: "3",
-    //         cimg: "femaleApparelOld.jpg",
-    //         ctitle: "Damaged apparel makeover",
-    //         cdesc: "Old and worn apparel gets a stunning new look."
-    //     }
-    //   ],
-    //   [
-    //     {
-    //         ckey: "4",
-    //         cimg: "oldShoes.jpg",
-    //         ctitle: "Shoes into a Transition",
-    //         cdesc: "Almost torn off shoes get new strengths to begin another journey."
-    //     },
-    //     {
-    //         ckey: "5",
-    //         cimg: "oldWatch.png",
-    //         ctitle: "Old is Gold",
-    //         cdesc: "Get ready to witness the change of fortunes of this Antic Watch."
-    //     },
-    //     {
-    //         ckey: "6",
-    //         cimg: "sherwani.png",
-    //         ctitle: "Sherwani revamped",
-    //         cdesc: "Sherwani gets a royal treatment to showcase its glory another time"
-    //     }
-    //   ]
-    // ]
-    // const repData = [
-    //   [
-    //     {
-    //         ckey: "1",
-    //         cimg: "denimOld.png",
-    //         ctitle: "ld Jeans getting Cleaned",
-    //         cdesc: "These jeans get the cleanest bath after a long time."
-    //     },
-    //     {
-    //         ckey: "2",
-    //         cimg: "brokenLuggage.jpg",
-    //         ctitle: "ummelled luggage Revives",
-    //         cdesc: "Our team brings back the life of a badly crushed luggage."
-    //     },
-    //     {
-    //         ckey: "3",
-    //         cimg: "femaleApparelOld.jpg",
-    //         ctitle: "Damaged apparel makeover",
-    //         cdesc: "ld and worn apparel gets a stunning new look."
-    //     }
-    //   ],
-    //   [
-    //     {
-    //         ckey: "4",
-    //         cimg: "oldShoes.jpg",
-    //         ctitle: "Shoes into a Transition",
-    //         cdesc: "Alost torn off shoes get new strengths to begin another journey."
-    //     },
-    //     {
-    //         ckey: "5",
-    //         cimg: "oldWatch.png",
-    //         ctitle: "ld is Gold",
-    //         cdesc: "Gst ready to witness the change of fortunes of this Antic Watch."
-    //     },
-    //     {
-    //         ckey: "6",
-    //         cimg: "sherwani.png",
-    //         ctitle: "Serwani revamped",
-    //         cdesc: "Sherwani gets a royal treatment to showcase its glory another time"
-    //     }
-    //   ]
-    // ]
+    
     return (
         <div className = 'donateApparels'>
           <Helmet>
@@ -179,9 +96,9 @@ const GetDonations = ({history}) => {
                 </div> */}
               </div>
               <div className='dsect'>
-                <h1>Reproduced Merchandise ♻️</h1>
-                {/* <ReProducts/> */}
-                <CardRow txArr={repData}/>
+                {/* <h1>Reproduced Merchandise ♻️</h1>
+                <CardRow txArr={repData}/> */}
+                <ReProducts/>
               </div>
           </div>
                 
