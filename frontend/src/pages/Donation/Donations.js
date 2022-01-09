@@ -180,7 +180,6 @@ const GetDonations = ({history}) => {
               </div>
               <div className='dsect'>
                 <h1>Reproduced Merchandise ♻️</h1>
-                <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p>
                 {/* <ReProducts/> */}
                 <CardRow txArr={repData}/>
               </div>

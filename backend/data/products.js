@@ -7,7 +7,7 @@ const products = [
 			"https://i.imgur.com/gg43pzm.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Men", "Jacket"],
 		sizes: ["S", "XS"],
 		price: 899,
@@ -23,7 +23,7 @@ const products = [
 			"https://i.imgur.com/vN2y3Sh.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Shoes", "Men"],
 		sizes: ["S", "XS"],
 		price: 599,
@@ -39,7 +39,7 @@ const products = [
 			"https://i.imgur.com/X3sshLQ.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Shoes", "Men"],
 		sizes: ["S", "XS"],
 		price: 929,
@@ -55,7 +55,7 @@ const products = [
 			"https://i.imgur.com/7AIhl9Y.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Watches", "Men"],
 		sizes: ["S", "XS"],
 		price: 399,
@@ -71,7 +71,7 @@ const products = [
 			"https://i.imgur.com/26Vuebt.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Women", "jacket"],
 		sizes: ["S", "XS"],
 		price: 999,
@@ -87,7 +87,7 @@ const products = [
 			"https://i.imgur.com/iWpQlso.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Women"],
 		sizes: ["S", "XS"],
 		price: 999,
@@ -103,7 +103,7 @@ const products = [
 			"https://i.imgur.com/hmLilCy.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Jacket", "Men"],
 		sizes: ["S", "XS"],
 		price: 999,
@@ -119,7 +119,7 @@ const products = [
 			"https://i.imgur.com/OfaTKXp.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Men"],
 		sizes: ["S", "XS"],
 		price: 999,
@@ -135,7 +135,7 @@ const products = [
 			"https://i.imgur.com/RA2eY23.jpg",
 		],
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			" 100% Original Products Pay on delivery might be available Easy 15 days returns and exchanges Try & Buy might be available",
 		category: ["Bag", "Women"],
 		sizes: ["S", "XS", "L", "XL"],
 		price: 1299.0,
