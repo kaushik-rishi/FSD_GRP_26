@@ -138,7 +138,7 @@ const Order = ({ match, history }) => {
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</span>{" "}
 									<b>
-										{item.qty} x ${item.price} = ${item.qty * item.price}
+										{item.qty} x {item.price} = Rs {item.qty * item.price}
 									</b>
 									<hr className="hr" />
 								</p>
@@ -152,13 +152,13 @@ const Order = ({ match, history }) => {
 					<h1>Order Summary</h1>
 					<div className="calculs-placeorder">
 						<h3>Items: </h3>
-						<p>${order.itemsPrice}</p>
+						<p>Rs {order.itemsPrice}</p>
 						<h3>Shipping: </h3>
-						<p>${order.shippingPrice}</p>
+						<p>Rs {order.shippingPrice}</p>
 						<h3>Tax: </h3>
-						<p>${order.taxPrice}</p>
+						<p>Rs {order.taxPrice}</p>
 						<h3>Total: </h3>
-						<p>${order.totalPrice}</p>
+						<p>Rs {order.totalPrice}</p>
 					</div>
 				</div>
 				<div className="bottominfos">
