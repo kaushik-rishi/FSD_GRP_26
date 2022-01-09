@@ -70,7 +70,7 @@ const About = () => {
 							className="mImage"
 							boxSize="400px"
 							objectFit="cover"
-							src="https://images.unsplash.com/photo-1614771637369-ed94441a651a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+							src="https://media.istockphoto.com/photos/smiling-man-outdoors-in-the-city-picture-id1179420343?b=1&k=20&m=1179420343&s=170667a&w=0&h=xBR4ZQbRC1Ub_5u_pZnG-omh0k-W8QDQgXxda5MCDT8="
 							alt="Segun Adebayo"
 						/>
 					</div>
@@ -83,7 +83,7 @@ const About = () => {
 							className="mImage"
 							boxSize="400px"
 							objectFit="cover"
-							src="https://images.unsplash.com/photo-1614038276039-667c23bc32fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=389&q=80"
+							src="https://media.istockphoto.com/photos/stay-hungry-for-success-picture-id1040964880?b=1&k=20&m=1040964880&s=170667a&w=0&h=9UyafGO_bP7BD_sJO3ZXF9hNFIk2FT5GvE1np50R8YE="
 							alt="Segun Adebayo"
 						/>
 					</div>
