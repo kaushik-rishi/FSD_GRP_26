@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 import { Form, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import ReProducts from '../../components/ReProducts';
-// import avatarRegister from "../../components/img/avatarRegister"
-// import addUs from "../../components/img/new.svg";
-// import wave from "../../components/img/wavev.png";
 import { getUserDetails, updateUserProfile } from "../../actions/userActions";
 import { listMyOrders } from "../../actions/orderActions";
 import { IoIosArrowDown } from "react-icons/all";
@@ -19,7 +16,6 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-	// Button,
   ButtonGroup,
 	Input,
 	Table,
@@ -40,27 +36,32 @@ import {
 import { AiOutlineEdit } from "react-icons/ai";
 
 const DonateApparels = ({history}) => {
+  // all profile details
   const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [message, setMessage] = useState(null);
+  // enabling editting in the form
 	const [isEditablename, setisEditablename] = useState(false);
 	const [isEditableemail, setisEditableemail] = useState(false);
+  // for description in the form
   const [desc, setDesc] = React.useState('')
+  // for guidelines
 	const [guide, setGuide] = useState("")
 	const nameinput = useRef(null);
 	const emailinput = useRef(null);
+  // checks if submission is valid
   const [formOk, setFormOk] = useState(false);
 	const dispatch = useDispatch();
 
 	const userDetails = useSelector((state) => state.userDetails);
 
-	const { error, user } = userDetails;
+	const { error, user } = userDetails; // required for user in sending request to apis
 
-	const userLogin = useSelector((state) => state.userLogin);
+	const userLogin = useSelector((state) => state.userLogin); // to send user to login page if not logged in
 
-	const { userInfo } = userLogin;
+	const { userInfo } = userLogin; // to check if user is logged in as only authenticated ones can donate
 
 	const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
 
@@ -70,7 +71,9 @@ const DonateApparels = ({history}) => {
     setName(user.name)
     setEmail(user.email)
     setDesc("")
-  };
+  }; // setting initial state with username and email prefilled
+
+  // json for guidelines
   const guideData = [
     {
       gcategory: 'apparel',
@@ -115,11 +118,14 @@ const DonateApparels = ({history}) => {
   ]
 	useEffect(() => {
 		if (!userInfo) {
+      // login if not logged on
 			history.push("/login");
 		} else {
 			if (!user.name) {
 				dispatch(getUserDetails("profile"));
+        // user must have a name
 			} else {
+        // prefilling
 				setName(user.name);
 				setEmail(user.email);
 			}
@@ -129,9 +135,13 @@ const DonateApparels = ({history}) => {
   const submitHandler = function (e) {
 		e.preventDefault();
     if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="")
+    {
+      // if empty form is submitted
       setMessage("We kindly request you to fill all the details as it helps us in finding more solutions to recycle donated products.")
+    }
     else
     {
+      // sending api request
       axios.post("http://localhost:4000/dnations",{
         name: e.target[0].value,
         email: e.target[1].value,
@@ -139,10 +149,12 @@ const DonateApparels = ({history}) => {
         dtitle: e.target[3].value,
         ddesc: e.target[5].value,
       }).then((res)=>{
+         // clean form data on getting response
           setFormOk(true)
           const frm = document.getElementsByName("myForm")[0]
           frm.reset()
           clearState()
+          // timer of 6 seconds for redirection so that user can verify its name in the table
           setTimeout(() => {
             history.push('/donations')
           }, 6000);
@@ -184,7 +196,6 @@ const DonateApparels = ({history}) => {
   }
   const guideChange = (gkey) => {
     const gdata = guideData.find(key => key.gcategory === gkey)
-    // console.log(gdata)
     setGuide(gdata.gmessage)
   }
     return (
@@ -209,7 +220,6 @@ const DonateApparels = ({history}) => {
                   <div className="login-content">
                     <form onSubmit={submitHandler} name="myForm"
                     >
-                      {/* <Image src={avatarRegister} /> */}
 
                       <div className="input-div entry">
                         <div className="i">
@@ -228,11 +238,6 @@ const DonateApparels = ({history}) => {
                           />
                         </div>
                       </div>
-                      {/* <AiOutlineEdit
-                        size="26"
-                        className="edit"
-                        onClick={nameinputfocus}
-                      /> */}
 
                       <div className="input-div entry">
                         <div className="i">
@@ -251,14 +256,6 @@ const DonateApparels = ({history}) => {
                           />
                         </div>
                       </div>
-                      {/* <AiOutlineEdit
-                        size="26"
-                        className="edit"
-                        onClick={() => {
-                          setisEditableemail(!isEditableemail);
-                          emailinput.current.focus();
-                        }}
-                      /> */}
 
                       <div className="input-div entry">
                         <div className="i">
@@ -267,11 +264,9 @@ const DonateApparels = ({history}) => {
                         <div className="div">
                           <input
                             type="textarea"
-                            // value={}
                             required
                             className="inputa"
                             placeholder="Enter pickup address"
-                            // onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                       </div>
@@ -283,33 +278,15 @@ const DonateApparels = ({history}) => {
                         <div className="div">
                           <input
                             type="text"
-                            // value={}
                             required
                             className="inputa"
                             placeholder="Enter title"
-                            // onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                       </div>
                       
-                      {/* <div className="input-div entry">
-                        <div className="i">
-                          <i className="fas fa-info-circle"></i>
-                        </div>
-                        <div className="div">
-                          <input
-                            type="textarea"
-                            // value={}
-                            required
-                            className="inputa"
-                            placeholder="Enter description"
-                            // onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </div>
-                      </div> */}
                        <div className='desCSS'>
                         <p mb='8px'>Category 
-                        {/* {desc} */}
                         </p>
                         <Select placeholder='Select option'>
                           <option value='apparel'>Apparel</option>
@@ -326,46 +303,14 @@ const DonateApparels = ({history}) => {
                       </div>
                       <div className='desCSS'>
                         <p mb='8px'>Description 
-                        {/* {desc} */}
                         </p>
                         <Textarea value={desc} onChange={handleInputChange} placeholder='Enter description' size='lg'/>
                       
                       </div>
-                      {/* <div className="input-div entry">
-                        <div className="i">
-                          <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                          <input
-                            type="password"
-                            value={password}
-                            required
-                            className="inputa"
-                            placeholder="Enter password"
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </div>
-                      </div> */}
                       
-                      {/* <div className="input-div passconf">
-                        <div className="i">
-                          <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="div">
-                          <input
-                            type="password"
-                            value={confirmPassword}
-                            className="inputa"
-                            placeholder="Confirm password"
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                          />
-                        </div>
-                      </div> */}
-                      {/* {message && <h4 className="Message">{message}</h4>} */}
                       <input type="submit" className="btna2 bta" 
                       value="Submit" 
                       />
-                      {/* {message && <h4 className="Message">{message}</h4>} */}
                       {formOk?(
                         <Alert
                           status='success'
@@ -385,10 +330,6 @@ const DonateApparels = ({history}) => {
                           </AlertDescription>
                         </Alert>
                       ):(
-                        // <Alert status='error'>
-                        //   <AlertIcon />
-                        //   There was an error processing your request
-                        // </Alert>
                         <h4 className="Message">{message}</h4>
                       )}
                   </form>
@@ -410,19 +351,9 @@ const DonateApparels = ({history}) => {
                   <button className='button4' onClick={(gkey) => guideChange('cosmetics')}>Cosmetics</button>
                   <button className='button4' onClick={(gkey) => guideChange('cat')}>Costumes and Textiles</button>
                 </div>
-                {/* <div>
-                  <a className='button4'>Formal</a>
-                  <a className='button4'>Accessories</a>
-                  <a className='button4'>Luggage</a>
-                  <a className='button4'>Cosmetics</a>
-                  <a className='button4'>Costumes and Textiles</a>
-                </div> */}
                 <p>{guide}</p>
-                {/* <p>Take data from the database and show the results only when a box is clicked</p> */}
               </div>
               <div className='dsect'>
-                {/* <h1>Reproduced Merchandise ♻️</h1>
-                <p>Plain database extraction, show images of recycled products (can also add a link to each product later)</p> */}
                 <ReProducts/>
               </div>
           </div>
