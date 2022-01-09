@@ -6,7 +6,7 @@ import img3 from './img/oldShoes.jpg'
 import img4 from './img/oldWatch.png'
 import img5 from './img/sherwani.png'
 import './cardsass.scss'
-function CardRow(){
+function CardRow(props){
     return(
         <>
             <br/>
