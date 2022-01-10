@@ -54,9 +54,9 @@ const DonateApparels = ({history}) => {
   // checks if submission is valid
   const [formOk, setFormOk] = useState(false);
 	const dispatch = useDispatch();
-
+  const [count,setCount] = useState(0)
 	const userDetails = useSelector((state) => state.userDetails);
-
+  const[willing, setWilling] = useState(false)
 	const { error, user } = userDetails; // required for user in sending request to apis
 
 	const userLogin = useSelector((state) => state.userLogin); // to send user to login page if not logged in
@@ -132,12 +132,31 @@ const DonateApparels = ({history}) => {
 		}
 	}, [dispatch, history, userInfo, user]);
   
+  useEffect(() => {
+    // exit early when we reach 0
+    if (!count) return;
+
+    // save intervalId to clear the interval when the
+    // component re-renders
+    const intervalId = setInterval(() => {
+      setCount(count - 1);
+    }, 1000);
+
+    // clear interval on re-render to avoid memory leaks
+    return () => clearInterval(intervalId);
+    // add timeLeft as a dependency to re-rerun the effect
+    // when we update it
+  }, [count]);
+
   const submitHandler = function (e) {
 		e.preventDefault();
-    if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="")
+    if(e.target[0].value==="" || e.target[1].value==="" || e.target[4].value==="" || e.target[5].value==="")
     {
       // if empty form is submitted
       setMessage("We kindly request you to fill all the details as it helps us in finding more solutions to recycle donated products.")
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000);
     }
     else
     {
@@ -155,6 +174,7 @@ const DonateApparels = ({history}) => {
           frm.reset()
           clearState()
           // timer of 6 seconds for redirection so that user can verify its name in the table
+          setCount(6)
           setTimeout(() => {
             history.push('/donations')
           }, 6000);
@@ -194,6 +214,9 @@ const DonateApparels = ({history}) => {
     const inputDesc = e.target.value
     setDesc(inputDesc)
   }
+  const wChange = (e) => {
+    setWilling(true)
+  }
   const guideChange = (gkey) => {
     const gdata = guideData.find(key => key.gcategory === gkey)
     setGuide(gdata.gmessage)
@@ -217,6 +240,9 @@ const DonateApparels = ({history}) => {
               <div className='dsect'>
                 <h1>Donate us ❤️</h1>
                 <p>We at Fasho.Live work to reduce the Climate Change by making accessible a plethora of Reusable Fashion Products donated by our kind-hearted Environmentalists 🌎 and RRR ♻️ Enthusiasts. Support our virtuous efforts by making a donation because every donation to us makes an impact in reducing the Climate Change.</p>
+                {!willing?(
+                  <button className='button4' onClick={() => wChange()}>DONATE TO FASHO.LIVE</button>
+                ):(
                   <div className="login-content">
                     <form onSubmit={submitHandler} name="myForm"
                     >
@@ -228,6 +254,7 @@ const DonateApparels = ({history}) => {
                         <div className="div">
                           <input
                             type="text"
+                            required
                             name='name'
                             value={name}
                             readOnly={isEditablename}
@@ -246,6 +273,7 @@ const DonateApparels = ({history}) => {
                         <div className="div">
                           <input
                             type="text"
+                            required
                             name='email'
                             value={email}
                             readOnly={isEditableemail}
@@ -326,14 +354,15 @@ const DonateApparels = ({history}) => {
                             Donation request submitted successfully!
                           </AlertTitle>
                           <AlertDescription maxWidth='sm'>
-                            Thanks for submitting your application. Our team will reach out to your address. We are redirecting you to our donations page.
+                            Thanks for submitting your application. Our team will reach out to your address. We are redirecting you to our donations page in <strong> {count} </strong> seconds.
                           </AlertDescription>
                         </Alert>
                       ):(
-                        <h4 className="Message">{message}</h4>
+                        <h4 className="msg">{message}</h4>
                       )}
-                  </form>
+                    </form>
                 </div>
+                )}
               </div>
               <div className='dsect'>
                 <h1>Guidelines ✍️</h1>

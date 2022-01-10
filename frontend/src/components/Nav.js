@@ -120,7 +120,7 @@ const Nav = ({ history }) => {
 					<li>About</li>
 				</NavLink>
 				<NavLink to="/donate" activeClassName="activlink">
-					<li>Donation Form</li>
+					<li>Donate Us</li>
 				</NavLink>
 			</ul>
 			<div className="burger" ref={Buric} onClick={onBurgActive}>

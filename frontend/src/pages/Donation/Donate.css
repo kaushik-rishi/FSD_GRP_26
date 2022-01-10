@@ -73,6 +73,9 @@
 .login-content form{
   width: 600px;
 }
+.msg {
+  color: red;
+}
 
 @media screen and (max-width: 1000px){
   .login-content form {
