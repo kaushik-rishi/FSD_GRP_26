@@ -10,7 +10,7 @@ function ReProducts(){
     return(
         <>
             <h1>Reproduced Merchandise ♻️</h1>
-            <p>We believe, "<strong>Good Work Speaks for Itself</strong>". Hence, have a look at the products we redeveloped from the kindest donations which would motivate you even more to donate us.</p>
+            <p>We believe, "<strong>Good Work Speaks for Itself</strong>". Please have a look at the products we redeveloped from the kindest donations which would motivate you even more to donate us.</p>
             <CardRow txArr={repData}/>
         </>
     )
