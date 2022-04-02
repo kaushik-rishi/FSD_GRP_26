@@ -66,7 +66,7 @@ const DonateApparels = ({history}) => {
 	const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
 
 	const { success } = userUpdateProfile;
-
+  // const [csrfTk,setCsrfTk] = useState("")
   const clearState = () => {
     setName(user.name)
     setEmail(user.email)
@@ -116,6 +116,13 @@ const DonateApparels = ({history}) => {
       gmessage:'Textile should be dry cleaned.'
     }
   ]
+//   const getCSRFToken = async () => {
+//     console.log("Hi")
+//     const response = await axios.get('http://localhost:4000/getCSRFToken');
+//     console.log(response.data.csrfToken)
+//     axios.defaults.headers.post['X-CSRF-TOKEN'] = response.data.csrfToken;
+//     return response.data.csrfToken
+//  };
 	useEffect(() => {
 		if (!userInfo) {
       // login if not logged on
@@ -128,6 +135,9 @@ const DonateApparels = ({history}) => {
         // prefilling
 				setName(user.name);
 				setEmail(user.email);
+        // console.log(user.name);
+        // setCsrfTk(getCSRFToken());
+        // console.log("hi");
 			}
 		}
 	}, [dispatch, history, userInfo, user]);
@@ -164,9 +174,9 @@ const DonateApparels = ({history}) => {
       axios.post("http://localhost:4000/dnations",{
         name: e.target[0].value,
         email: e.target[1].value,
-        dcat: e.target[4].value,
+        dcat: e.target[5].value,
         dtitle: e.target[3].value,
-        ddesc: e.target[5].value,
+        ddesc: e.target[6].value,
       }).then((res)=>{
          // clean form data on getting response
           setFormOk(true)
@@ -244,8 +254,9 @@ const DonateApparels = ({history}) => {
                   <button className='button4' onClick={() => wChange()}>DONATE TO FASHO.LIVE</button>
                 ):(
                   <div className="login-content">
-                    <form onSubmit={submitHandler} name="myForm"
+                    <form onSubmit={submitHandler} name="myForm" enctype="multipart/form-data"
                     >
+                      {/* <input type="hidden" name="_csrf" value={csrfTk}/> */}
 
                       <div className="input-div entry">
                         <div className="i">
@@ -312,8 +323,23 @@ const DonateApparels = ({history}) => {
                           />
                         </div>
                       </div>
+
+
+                      <div className='desCSS'>
+                        <p mb='8px'>Product Image(s) 
+
+                        <div className='div'>
+                          <input type="file" 
+                            id="file" 
+                            name="file" 
+                            className='imgInput'
+                            placeholder="Add your donated product"
+                          />
+                        </div>
+                        </p>
+                      </div>
                       
-                       <div className='desCSS'>
+                      <div className='desCSS'>
                         <p mb='8px'>Category 
                         </p>
                         <Select placeholder='Select option'>

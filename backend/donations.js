@@ -3,7 +3,13 @@ import bodyParser from "body-parser";
 import fs from "fs";
 import cors from "cors";
 import { format } from "date-fns";
-
+import cookieParser from 'cookie-parser';
+import csrf from 'csurf';
+import multer from 'multer';
+import path from 'path'
+const __dirname = path.join('backend','static','public') ;
+// __dirname = __dirname + '/backend'
+console.log(__dirname)
 var app = express(); //include the module .this give us the capability the read the body.
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -15,6 +21,7 @@ app.use(
 app.use(cors());
 // let users = ["vineeta:test123","meenu:test123","pankaj:test123","rakesh:test123"];
 app.get("/dnations", function (request, response) {
+  console.log(__dirname)
   var obj = JSON.parse(fs.readFileSync('./backend/data/donations.json'));
   // var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
   // console.log(obj)
@@ -24,7 +31,37 @@ app.get("/dnations", function (request, response) {
   // console.log(format(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss'))
   return 
 })
-app.post("/dnations", function (request, response) {
+
+
+// app.use(express.static(path.join(__dirname, 'static')));
+
+let csrfProtect = csrf({ cookie: true })
+// parse cookies
+// we need this because "cookie" is true in csrfProtection
+app.use(cookieParser())
+
+// app.get('/getCSRFToken', csrfProtect, (req, res) => {
+//   res.json({ csrfToken: req.csrfToken() });
+// });
+
+
+const upload = multer({ 
+  storage: multer.diskStorage({
+      destination: (req, file, cb) => {
+          cb(null,__dirname)
+      },
+      filename: (req, file, cb) => {
+          console.log(file.originalname)
+          console.log(__dirname)
+          const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E6)
+          cb(null, uniquePrefix+'-'+file.originalname)
+      }
+  })
+});
+
+app.post("/dnations",  upload.single("file"), 
+// csrfProtect, 
+function (request, response) {
 	let uname = request.body.name;
 	let email = request.body.email;
 	let cat = request.body.dcat;

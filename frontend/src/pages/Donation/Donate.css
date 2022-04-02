@@ -88,7 +88,10 @@
   margin-top: 4px;
   margin-bottom: 4px;
 }
-
+.imgInput{
+  margin-top: 8px;
+  font-size: 90%;
+}
 .bta{
   margin-top: 22px;
   margin-bottom: 10px;
