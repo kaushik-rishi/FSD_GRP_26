@@ -3,6 +3,13 @@ info:
   title: Fasho API
   description: Optional multiline
   version: 0.1.9
+tags:
+- name: "orders"
+  description: "Everything about orders"
+- name: "products"
+  description: "Everything about listed products"
+- name: "users"
+  description: "Everything about registered users"
 servers:
   - url: http://localhost:5000/
     description: This is the main Development server
@@ -18,8 +25,50 @@ components:
 security:
   - bearerAuth: []
 paths:
+  /api/users/login/:
+    post:
+      security : []
+      tags:
+      - "users"
+      # summary: Add a new USER
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/auth'
+            example:
+              email: "abc@gmail.com"
+              password: "abc@gmail.com"
+
+  /api/users/:
+    post:
+      security : []
+      tags:
+      - "users"
+      summary: Add a new USER
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/User'
+            example:
+              name: "user"
+              email: "user@gmail.com"
+              password: "user@gmail.com"
+      responses:
+        "201":
+          description: "Successfully created the user"
+        "500":
+          description: "Error creating the user"
+
   /api/orders/products:
     get:
+      tags:
+      - "orders"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -34,6 +83,8 @@ paths:
 
   /api/orders/{id}:
     get:
+      tags:
+      - "orders"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       parameters:
@@ -54,19 +105,11 @@ paths:
                 items:
                   type: string
   
-
-      responses:
-        "201":
-          description: A JSON array of user names
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
   
   /api/orders/myorders:
     get:
+      tags:
+        - "orders"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -80,6 +123,8 @@ paths:
                   type: string
   /api/orders/:
     get:
+      tags:
+        - "orders"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -93,6 +138,8 @@ paths:
                   type: string
   /api/orders/:
     get:
+      tags:
+        - "users"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -106,6 +153,8 @@ paths:
                   type: string
   /api/products/:
     get:
+      tags:
+        - "products"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -133,6 +182,8 @@ paths:
   
   /api/users/profile:
     get:
+      tags:
+        - "users"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -144,6 +195,32 @@ paths:
                 type: array
                 items:
                   type: string
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        required : true
+      email:
+        type: "string"
+        required : true
+      password:
+        type: "string"
+        required : true
+      isAdmin:
+        type: "boolean"
+        required : true
+        default: false
+  auth:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      password:
+        type: "string"
+    
 
   # /api/users/login:
   #   post:

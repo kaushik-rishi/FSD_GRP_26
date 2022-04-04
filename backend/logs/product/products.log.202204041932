@@ -1,0 +1,9 @@
+::ffff:127.0.0.1 Mon Apr 04 2022 19:32:05 GMT+0530 (India Standard Time) GET /api/products?keyword= 475.677 ms
+::ffff:127.0.0.1 Mon Apr 04 2022 19:32:08 GMT+0530 (India Standard Time) GET /api/products?keyword= 473.994 ms
+::ffff:127.0.0.1 Mon Apr 04 2022 19:32:09 GMT+0530 (India Standard Time) GET /api/products?keyword= 305.191 ms
+::1 Mon Apr 04 2022 19:32:15 GMT+0530 (India Standard Time) GET /api-docs/ 2.604 ms
+::1 Mon Apr 04 2022 19:32:15 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-init.js 0.629 ms
+::1 Mon Apr 04 2022 19:32:15 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-bundle.js 5.184 ms
+::1 Mon Apr 04 2022 19:32:15 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-standalone-preset.js 5.255 ms
+::1 Mon Apr 04 2022 19:32:15 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui.css 204.026 ms
+::1 Mon Apr 04 2022 19:32:16 GMT+0530 (India Standard Time) GET /api-docs/favicon-32x32.png 0.662 ms

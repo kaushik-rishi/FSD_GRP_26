@@ -1,0 +1,4 @@
+::1 Tue Apr 05 2022 00:52:29 GMT+0530 (India Standard Time) POST /api/users/ 283.623 ms
+::1 Tue Apr 05 2022 00:52:30 GMT+0530 (India Standard Time) POST /api/users/ 403.604 ms
+::1 Tue Apr 05 2022 00:52:31 GMT+0530 (India Standard Time) POST /api/users/ 565.603 ms
+::1 Tue Apr 05 2022 00:52:42 GMT+0530 (India Standard Time) POST /api/users/ 1037.392 ms
