@@ -98,6 +98,7 @@
 		"style-value-types": "^4.0.3",
 		"stylis": "^4.0.7",
 		"supports-color": "^5.5.0",
+		"swagger-ui-express": "^4.3.0",
 		"tiny-invariant": "^1.1.0",
 		"tinycolor2": "^1.4.2",
 		"to-fast-properties": "^2.0.0",
@@ -107,6 +108,7 @@
 		"use-sidecar": "^1.0.4",
 		"warning": "^4.0.3",
 		"yaml": "^1.10.0",
+		"yamljs": "^0.3.0",
 		"yarn": "^1.22.17"
 	},
 	"scripts": {

@@ -9,6 +9,11 @@ import productRoutes from "./routes/productRoutes.js";
 import fsr from "file-stream-rotator";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
+import YAML from "yamljs";
+import swaggerUI from "swagger-ui-express";
+
+const swaggerJSDocs = YAML.load("./backend/api.yaml");
+
 dotenv.config();
 
 // const dot = require("dotenv").config();
@@ -57,6 +62,7 @@ app.use("/api/orders", orderRoutes);
 app.get("/api/config/paypal", (req, res) =>
 	res.send(process.env.PAYPAL_CLIENT_ID)
 );
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
 
 const __dirname = path.resolve();
 
