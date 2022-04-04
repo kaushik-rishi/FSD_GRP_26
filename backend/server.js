@@ -19,12 +19,30 @@ const app = express();
 // if (process.env.NODE_ENV === "developement") {
 // 	app.use(morgan("dev"));
 // }
-// morgan.token('host', function(req, res){
-//     return req.hostname;
+
+morgan.token('clientIPA', function(req, res){
+    return req.ip;
+})
+
+// var accessLogStream = fsr.createStream('access.log', {
+// 	interval: '1d', // rotate daily
+// 	path: path.join(__dirname, 'log')
 // })
-// morgan.token("wbdaccess", "User trying to access the :url");
-// let logsinfo = fsr.getStream({filename:"test.log", frequency:"1h", verbose: true});
-// app.use(morgan('wbdaccess', {stream: logsinfo}))
+
+let logsinfo = fsr.getStream({filename:"products.log", frequency:"1h", verbose: true});
+app.use(morgan(
+	// 'wbdaccess'
+	function (tokens, req, res) {
+		return [
+		  tokens['clientIPA'](req, res),
+		  tokens.method(req, res),
+		  tokens.url(req, res),
+		//   tokens.status(req, res),
+		//   tokens.res(req, res, 'content-length'), '-',
+		  tokens['response-time'](req, res), 'ms'
+		].join(' ')
+	}
+, {stream: logsinfo}))
 
 app.use(express.json());
 

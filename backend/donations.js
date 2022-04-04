@@ -7,6 +7,8 @@ import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
 import multer from 'multer';
 import path from 'path'
+import morgan from "morgan";
+import fsr from "file-stream-rotator";
 const __dirname = path.join('backend','static','public') ;
 // __dirname = __dirname + '/backend'
 // console.log(__dirname)
@@ -32,7 +34,29 @@ app.get("/dnations", function (request, response) {
   return 
 })
 
+morgan.token('clientIPA', function(req, res){
+  return req.ip;
+})
 
+// var accessLogStream = fsr.createStream('access.log', {
+// 	interval: '1d', // rotate daily
+// 	path: path.join(__dirname, 'log')
+// })
+
+let logsinfo = fsr.getStream({filename:"donations.log", frequency:"1h", verbose: true});
+app.use(morgan(
+// 'wbdaccess'
+function (tokens, req, res) {
+  return [
+    tokens['clientIPA'](req, res),
+    tokens.method(req, res),
+    tokens.url(req, res),
+  //   tokens.status(req, res),
+  //   tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+}
+, {stream: logsinfo}))
 // app.use(express.static(path.join(__dirname, 'static')));
 
 let csrfProtect = csrf({ cookie: true })
