@@ -6,7 +6,7 @@ import morgan from "morgan";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
-
+import fsr from "file-stream-rotator";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -16,9 +16,15 @@ connectDB();
 
 const app = express();
 
-if (process.env.NODE_ENV === "developement") {
-	app.use(morgan("dev"));
-}
+// if (process.env.NODE_ENV === "developement") {
+// 	app.use(morgan("dev"));
+// }
+// morgan.token('host', function(req, res){
+//     return req.hostname;
+// })
+// morgan.token("wbdaccess", "User trying to access the :url");
+// let logsinfo = fsr.getStream({filename:"test.log", frequency:"1h", verbose: true});
+// app.use(morgan('wbdaccess', {stream: logsinfo}))
 
 app.use(express.json());
 

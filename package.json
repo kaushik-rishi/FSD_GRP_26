@@ -38,6 +38,7 @@
 		"escape-string-regexp": "^4.0.0",
 		"express": "^4.17.1",
 		"express-async-handler": "^1.1.4",
+		"file-stream-rotator": "^0.6.1",
 		"find-root": "^1.1.0",
 		"focus-lock": "^0.8.1",
 		"framer-motion": "^3.7.0",

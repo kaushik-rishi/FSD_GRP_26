@@ -9,7 +9,7 @@ import multer from 'multer';
 import path from 'path'
 const __dirname = path.join('backend','static','public') ;
 // __dirname = __dirname + '/backend'
-console.log(__dirname)
+// console.log(__dirname)
 var app = express(); //include the module .this give us the capability the read the body.
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -21,7 +21,7 @@ app.use(
 app.use(cors());
 // let users = ["vineeta:test123","meenu:test123","pankaj:test123","rakesh:test123"];
 app.get("/dnations", function (request, response) {
-  console.log(__dirname)
+  // console.log(__dirname)
   var obj = JSON.parse(fs.readFileSync('./backend/data/donations.json'));
   // var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
   // console.log(obj)
@@ -51,8 +51,8 @@ const upload = multer({
           cb(null,__dirname)
       },
       filename: (req, file, cb) => {
-          console.log(file.originalname)
-          console.log(__dirname)
+          // console.log(file.originalname)
+          // console.log(__dirname)
           const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E6)
           cb(null, uniquePrefix+'-'+file.originalname)
       }
@@ -67,7 +67,8 @@ function (request, response) {
 	let cat = request.body.dcat;
 	let title = request.body.dtitle;
 	let udesc = request.body.ddesc;
-	//   console.log(donations)
+	// console.log(request.body.file)
+	// console.log(request.file)
 	if (!uname) {
 		response.status(400).json("Empty name request");
 		// stop further execution in this callback
@@ -110,7 +111,7 @@ function (request, response) {
 		if (err) console.log("Error writing file:", err);
 	});
 
-	response.status(200).json("user authenticated");
+	response.status(200).json("donation uploaded");
 	return;
 });
 

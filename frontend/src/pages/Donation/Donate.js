@@ -160,7 +160,7 @@ const DonateApparels = ({history}) => {
 
   const submitHandler = function (e) {
 		e.preventDefault();
-    if(e.target[0].value==="" || e.target[1].value==="" || e.target[4].value==="" || e.target[5].value==="")
+    if(e.target[0].value==="" || e.target[1].value==="" || e.target[3].value==="" || e.target[5].value==="" || e.target[6].value==="")
     {
       // if empty form is submitted
       setMessage("We kindly request you to fill all the details as it helps us in finding more solutions to recycle donated products.")
@@ -171,13 +171,26 @@ const DonateApparels = ({history}) => {
     else
     {
       // sending api request
-      axios.post("http://localhost:4000/dnations",{
-        name: e.target[0].value,
-        email: e.target[1].value,
-        dcat: e.target[5].value,
-        dtitle: e.target[3].value,
-        ddesc: e.target[6].value,
-      }).then((res)=>{
+      // console.log(e.target[4].files[0])
+      // console.log(e.target[4].value)
+      const formData = new FormData();
+      formData.append("name",e.target[0].value)
+      formData.append("email",e.target[1].value)
+      formData.append("dcat",e.target[5].value)
+      formData.append("dtitle",e.target[3].value)
+      formData.append("ddesc",e.target[6].value)
+      formData.append("file",e.target[4].files[0])
+      axios.post("http://localhost:4000/dnations",
+      formData
+      // {
+      //   name: e.target[0].value,
+      //   email: e.target[1].value,
+      //   dcat: e.target[5].value,
+      //   dtitle: e.target[3].value,
+      //   ddesc: e.target[6].value,
+      //   file: e.target[4].files[0],
+      // }
+      ).then((res)=>{
          // clean form data on getting response
           setFormOk(true)
           const frm = document.getElementsByName("myForm")[0]
