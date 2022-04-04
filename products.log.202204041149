@@ -1,3 +1,0 @@
-::ffff:127.0.0.1 GET /api/products?keyword= 312.478 ms
-::ffff:127.0.0.1 GET /api/products/61daf2d447c2df5bd6df986b 290.267 ms
-::ffff:127.0.0.1 GET /api/users/profile 629.873 ms

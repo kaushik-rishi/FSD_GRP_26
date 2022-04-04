@@ -15,7 +15,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+const logloc = path.join('backend') ;
 // if (process.env.NODE_ENV === "developement") {
 // 	app.use(morgan("dev"));
 // }
@@ -24,17 +24,22 @@ morgan.token('clientIPA', function(req, res){
     return req.ip;
 })
 
+morgan.token('ts', function(req, res){ // req time stamp
+	return new Date(Date.now());
+})
 // var accessLogStream = fsr.createStream('access.log', {
 // 	interval: '1d', // rotate daily
 // 	path: path.join(__dirname, 'log')
 // })
 
-let logsinfo = fsr.getStream({filename:"products.log", frequency:"1h", verbose: true});
+const  pstream = path.join(logloc,"logs","product","products.log")
+let logsinfo = fsr.getStream({filename:pstream, frequency:"1h", verbose: true});
 app.use(morgan(
 	// 'wbdaccess'
 	function (tokens, req, res) {
 		return [
 		  tokens['clientIPA'](req, res),
+		  tokens['ts'](req, res),
 		  tokens.method(req, res),
 		  tokens.url(req, res),
 		//   tokens.status(req, res),

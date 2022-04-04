@@ -9,7 +9,9 @@ import multer from 'multer';
 import path from 'path'
 import morgan from "morgan";
 import fsr from "file-stream-rotator";
-const __dirname = path.join('backend','static','public') ;
+
+// const __dirname = path.join('backend','static','public') ;
+const __dirname = path.join('backend') ;
 // __dirname = __dirname + '/backend'
 // console.log(__dirname)
 var app = express(); //include the module .this give us the capability the read the body.
@@ -21,7 +23,37 @@ app.use(
 	})
 );
 app.use(cors());
-// let users = ["vineeta:test123","meenu:test123","pankaj:test123","rakesh:test123"];
+
+morgan.token('clientIPA', function(req, res){
+  return req.ip;
+})
+
+morgan.token('ts', function(req, res){ // req time stamp
+  return new Date(Date.now());
+})
+
+// var accessLogStream = fsr.createStream('access.log', {
+// 	interval: '1d', // rotate daily
+// 	path: path.join(__dirname, 'log')
+// })
+const  pstream = path.join(__dirname,"logs","donation","donations.log")
+let logsinfo = fsr.getStream({filename:pstream, frequency:"1h", verbose: true});
+app.use(morgan(
+// 'wbdaccess'
+function (tokens, req, res) {
+  return [
+    tokens['clientIPA'](req, res),
+    tokens['ts'](req, res),
+    tokens.method(req, res),
+    tokens.url(req, res),
+  //   tokens.status(req, res),
+  //   tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+}
+, {stream: logsinfo}))
+// app.use(express.static(path.join(__dirname, 'static')));
+
 app.get("/dnations", function (request, response) {
   // console.log(__dirname)
   var obj = JSON.parse(fs.readFileSync('./backend/data/donations.json'));
@@ -33,31 +65,6 @@ app.get("/dnations", function (request, response) {
   // console.log(format(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss'))
   return 
 })
-
-morgan.token('clientIPA', function(req, res){
-  return req.ip;
-})
-
-// var accessLogStream = fsr.createStream('access.log', {
-// 	interval: '1d', // rotate daily
-// 	path: path.join(__dirname, 'log')
-// })
-
-let logsinfo = fsr.getStream({filename:"donations.log", frequency:"1h", verbose: true});
-app.use(morgan(
-// 'wbdaccess'
-function (tokens, req, res) {
-  return [
-    tokens['clientIPA'](req, res),
-    tokens.method(req, res),
-    tokens.url(req, res),
-  //   tokens.status(req, res),
-  //   tokens.res(req, res, 'content-length'), '-',
-    tokens['response-time'](req, res), 'ms'
-  ].join(' ')
-}
-, {stream: logsinfo}))
-// app.use(express.static(path.join(__dirname, 'static')));
 
 let csrfProtect = csrf({ cookie: true })
 // parse cookies
@@ -72,7 +79,7 @@ app.use(cookieParser())
 const upload = multer({ 
   storage: multer.diskStorage({
       destination: (req, file, cb) => {
-          cb(null,__dirname)
+          cb(null,path.join(__dirname,'static','public'))
       },
       filename: (req, file, cb) => {
           // console.log(file.originalname)
