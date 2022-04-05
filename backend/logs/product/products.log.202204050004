@@ -1,2 +1,0 @@
-::ffff:127.0.0.1 Tue Apr 05 2022 00:04:14 GMT+0530 (India Standard Time) GET /api/products?keyword= 30018.872 ms
-::ffff:127.0.0.1 Tue Apr 05 2022 00:04:31 GMT+0530 (India Standard Time) GET /api/products/?Cg=Women 30012.682 ms

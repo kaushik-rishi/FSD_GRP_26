@@ -1,4 +1,0 @@
-::ffff:127.0.0.1 Tue Apr 05 2022 01:42:22 GMT+0530 (India Standard Time) POST /api/users/login 393.091 ms
-::ffff:127.0.0.1 Tue Apr 05 2022 01:42:24 GMT+0530 (India Standard Time) POST /api/users/login 355.820 ms
-::ffff:127.0.0.1 Tue Apr 05 2022 01:42:28 GMT+0530 (India Standard Time) POST /api/users/login 473.454 ms
-::ffff:127.0.0.1 Tue Apr 05 2022 01:42:29 GMT+0530 (India Standard Time) POST /api/users/login 324.047 ms
