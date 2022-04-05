@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Fasho API
-  description: Optional multiline
+  # description: Optional multiline
   version: 0.1.9
 tags:
 - name: "orders"
@@ -10,11 +10,6 @@ tags:
   description: "Everything about listed products"
 - name: "users"
   description: "Everything about registered users"
-servers:
-  - url: http://localhost:5000/
-    description: This is the main Development server
-  - url: http://localhost:3000/
-    description: This is the main Front-end Development server
 components:
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme
@@ -25,6 +20,160 @@ components:
 security:
   - bearerAuth: []
 paths:
+
+  /api/users/{id}:
+    put:
+      tags:
+      - "users"
+      description: Optional extended description in CommonMark or HTML
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+          type: 
+          format: 
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/update_user'
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+    get:
+      tags:
+      - "users"
+      description: Optional extended description in CommonMark or HTML
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+          type: 
+          format: 
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+    delete:
+      tags:
+      - "users"
+      description: Optional extended description in CommonMark or HTML
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+          type: 
+          format: 
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /api/products/{id}:
+    get:
+      security: []
+      tags:
+      - "products"
+      summary: Returns products description.
+      description: Optional extended description in CommonMark or HTML
+      parameters:
+        - name: id
+          in: path
+          description: Product ID
+          required: true
+          schema:
+          type: 
+          format: 
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    delete:
+      tags:
+      - "products"
+      description: Optional extended description in CommonMark or HTML
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          schema:
+          type: 
+          format: 
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /api/users/profile/:
+    get:
+      tags:
+        - "users"
+      summary: Returns a list of orders.
+      description: Optional extended description in CommonMark or HTML
+      responses:
+        "200":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    put:
+      tags:
+      - "users"
+      # summary: Add a new USER
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/update'
+      responses:
+        "201":
+          description: "Successfully"
+        "500":
+          description: "Error"
+            
+
   /api/users/login/:
     post:
       security : []
@@ -41,8 +190,26 @@ paths:
             example:
               email: "abc@gmail.com"
               password: "abc@gmail.com"
+      responses:
+        "201":
+          description: "Successfully created the user"
+        "500":
+          description: "Error creating the user"
 
   /api/users/:
+    get:
+      tags:
+      - "users"
+      description: Optional extended description in CommonMark or HTML
+      responses:
+        "201":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
     post:
       security : []
       tags:
@@ -65,21 +232,6 @@ paths:
         "500":
           description: "Error creating the user"
 
-  /api/orders/products:
-    get:
-      tags:
-      - "orders"
-      summary: Returns a list of orders.
-      description: Optional extended description in CommonMark or HTML
-      responses:
-        "200":
-          description: A JSON array of user names
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
 
   /api/orders/{id}:
     get:
@@ -104,6 +256,7 @@ paths:
                 type: array
                 items:
                   type: string
+    
   
   
   /api/orders/myorders:
@@ -122,6 +275,22 @@ paths:
                 items:
                   type: string
   /api/orders/:
+    # post:
+    #   tags:
+    #   - "orders"
+    #   # summary: Add a new USER
+    #   requestBody:
+    #     description: Optional description in *Markdown*
+    #     required: true
+    #     content:
+    #       application/json:
+    #         schema: 
+    #           $ref: '#/definitions/new_order'
+    #   responses:
+    #     "201":
+    #       description: "Successfully"
+    #     "500":
+    #       description: "Error"
     get:
       tags:
         - "orders"
@@ -139,7 +308,7 @@ paths:
   /api/orders/:
     get:
       tags:
-        - "users"
+        - "orders"
       summary: Returns a list of orders.
       description: Optional extended description in CommonMark or HTML
       responses:
@@ -166,6 +335,8 @@ paths:
                 type: array
                 items:
                   type: string
+    
+
   /api/users/:
     get:
       summary: Returns a list of orders.
@@ -180,21 +351,6 @@ paths:
                 items:
                   type: string
   
-  /api/users/profile:
-    get:
-      tags:
-        - "users"
-      summary: Returns a list of orders.
-      description: Optional extended description in CommonMark or HTML
-      responses:
-        "200":
-          description: A JSON array of user names
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
 
 definitions:
   User:
@@ -211,7 +367,6 @@ definitions:
         required : true
       isAdmin:
         type: "boolean"
-        required : true
         default: false
   auth:
     type: "object"
@@ -220,18 +375,27 @@ definitions:
         type: "string"
       password:
         type: "string"
-    
-
-  # /api/users/login:
-  #   post:
-  #     summary: Returns a list of orders.
-  #     description: Optional extended description in CommonMark or HTML
-  #     responses:
-  #       "200":
-  #         description: A JSON array of user names
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: array
-  #               items:
-  #                 type: string
+  update:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+  update_user:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      isAdmin:
+        type: "boolean"
+  # new_order:
+  #   type: "object"
+  #   properties:
+  #     # orderItems,shippingAddress,paymentMethod,itemsPrice,taxPrice,shippingPrice,totalPrice
+  #     orderItems:
+  #       type: 
