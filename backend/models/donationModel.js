@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 const donationSchema = mongoose.Schema({
     key: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        // required: true
     },
     date:{
         type : Date,
-        required: true,
+        // required: true,
         default: Date(Date.now)
     },
     // images:[{
@@ -35,6 +35,6 @@ const donationSchema = mongoose.Schema({
     },
 }) 
 
-const donation = mongoose.model('Donation', donationSchema)  
+const Donation = mongoose.model('donated_products', donationSchema)  
 
-export default donation
+export default Donation

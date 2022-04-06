@@ -10,7 +10,7 @@ import path from 'path'
 import morgan from "morgan";
 import fsr from "file-stream-rotator";
 import connectDonDB from './config/dondb.js';
-
+import dpRoutes from "./routes/dpRoutes.js";
 import YAML from "yamljs";
 import swaggerUI from "swagger-ui-express";
 
@@ -20,7 +20,7 @@ connectDonDB()
 // const __dirname = path.join('backend','static','public') ;
 const __dirname = path.join('backend') ;
 // __dirname = __dirname + '/backend'
-// console.log(__dirname)
+console.log(__dirname)
 var app = express(); //include the module .this give us the capability the read the body.
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -61,17 +61,23 @@ function (tokens, req, res) {
 , {stream: logsinfo}))
 // app.use(express.static(path.join(__dirname, 'static')));
 
-app.get("/dnations", function (request, response) {
-  // console.log(__dirname)
-  var obj = JSON.parse(fs.readFileSync('./backend/data/donations.json'));
-  // var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
-  // console.log(obj)
-  response.status(200).json(obj);
-  const pd = new Date(Date.now())
-  // console.log(format(pd, 'dd.MM.yyyy HH:mm:ss'))
-  // console.log(format(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss'))
-  return 
+app.get('/', (req, res) => {
+  res.send("hi")
 })
+
+app.use("/dnations",dpRoutes)
+
+// app.get("/dnations", function (request, response) {
+//   // console.log(__dirname)
+//   var obj = JSON.parse(fs.readFileSync('./backend/data/donations.json'));
+//   // var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
+//   // console.log(obj)
+//   response.status(200).json(obj);
+//   const pd = new Date(Date.now())
+//   // console.log(format(pd, 'dd.MM.yyyy HH:mm:ss'))
+//   // console.log(format(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss'))
+//   return 
+// })
 
 // let csrfProtect = csrf({ cookie: true })
 // parse cookies
@@ -97,60 +103,60 @@ const upload = multer({
   })
 });
 
-app.post("/dnations",  upload.single("file"), 
-function (request, response) {
-	let uname = request.body.name;
-	let email = request.body.email;
-	let cat = request.body.dcat;
-	let title = request.body.dtitle;
-	let udesc = request.body.ddesc;
-	// console.log(request.body.file)
-	// console.log(request.file)
-	if (!uname) {
-		response.status(400).json("Empty name request");
-		// stop further execution in this callback
-		return;
-	}
-	if (!email) {
-		response.status(400).json("Undefined email request");
-		// stop further execution in this callback
-		return;
-	}
-	if (!cat) {
-		response.status(400).json("No category found");
-		// stop further execution in this callback
-		return;
-	}
-	if (!title) {
-		response.status(400).json("Donation title missing");
-		// stop further execution in this callback
-		return;
-	}
-	if (!udesc) {
-		response.status(400).json("Description not found");
-		// stop further execution in this callback
-		return;
-	}
-	var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
-	const keyC = Object.keys(obj).length + 1;
-	var pdate = new Date(Date.now());
-	obj.push({
-		key: keyC,
-		date: pdate,
-		name: uname,
-		email: email,
-		cat: cat,
-		title: title,
-		desc: udesc,
-	});
-	const jsonStr = JSON.stringify(obj);
-	fs.writeFile("./backend/data/donations.json", jsonStr, (err) => {
-		if (err) console.log("Error writing file:", err);
-	});
+// app.post("/dnations",  upload.single("file"), 
+// function (request, response) {
+// 	let uname = request.body.name;
+// 	let email = request.body.email;
+// 	let cat = request.body.dcat;
+// 	let title = request.body.dtitle;
+// 	let udesc = request.body.ddesc;
+// 	// console.log(request.body.file)
+// 	// console.log(request.file)
+// 	if (!uname) {
+// 		response.status(400).json("Empty name request");
+// 		// stop further execution in this callback
+// 		return;
+// 	}
+// 	if (!email) {
+// 		response.status(400).json("Undefined email request");
+// 		// stop further execution in this callback
+// 		return;
+// 	}
+// 	if (!cat) {
+// 		response.status(400).json("No category found");
+// 		// stop further execution in this callback
+// 		return;
+// 	}
+// 	if (!title) {
+// 		response.status(400).json("Donation title missing");
+// 		// stop further execution in this callback
+// 		return;
+// 	}
+// 	if (!udesc) {
+// 		response.status(400).json("Description not found");
+// 		// stop further execution in this callback
+// 		return;
+// 	}
+// 	var obj = JSON.parse(fs.readFileSync("./backend/data/donations.json"));
+// 	const keyC = Object.keys(obj).length + 1;
+// 	var pdate = new Date(Date.now());
+// 	obj.push({
+// 		key: keyC,
+// 		date: pdate,
+// 		name: uname,
+// 		email: email,
+// 		cat: cat,
+// 		title: title,
+// 		desc: udesc,
+// 	});
+// 	const jsonStr = JSON.stringify(obj);
+// 	fs.writeFile("./backend/data/donations.json", jsonStr, (err) => {
+// 		if (err) console.log("Error writing file:", err);
+// 	});
 
-	response.status(200).json("donation uploaded");
-	return;
-});
+// 	response.status(200).json("donation uploaded");
+// 	return;
+// });
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
 

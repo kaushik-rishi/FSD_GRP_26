@@ -116,7 +116,7 @@
 	"scripts": {
 		"start": "node backend/server",
 		"server": "nodemon backend/server.js",
-		"donate": "node backend/donations",
+		"donate": "nodemon backend/donations.js",
 		"client": "npm start --prefix frontend",
 		"dev": "concurrently \"npm run server\" \"npm run client\" \"npm run donate\" ",
 		"data:import": "node backend/seeder",

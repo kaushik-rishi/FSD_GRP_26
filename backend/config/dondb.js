@@ -8,7 +8,7 @@ const connectDonDB = async () => {
     //   'mongodb+srv://kaushikrishi:Kamal_123@cluster0.pjncu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     'mongodb://localhost:27017/',
       {
-        dbName: "donations",
+        dbName: "donation",
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
