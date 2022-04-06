@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Fasho API
+  # description: Optional multiline
+  version: 0.1.9
+tags:
+- name: "donations"
+  description: "Everything about donated products"
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+paths:
+
+  /dnations:
+    get: 
+      security: []
+      tags: 
+      - "donations"
+      summary: To catch up the live donation activity going on in Fasho.Live  
+      description: Fetches the donation activity from the server database & display the records per request
+      responses:
+        "200":
+          description: A JSON array of donation activity including the donor name, email, title, description, product category, product key and timestamp
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    
+    post:
+      tags:
+      - "donations"
+      summary: To post the request for donating a product on Fasho.Live supplemented with the details of the donated product   
+      description: Posts the donation request to the server and confirms if the donation request for a product is successful
+      requestBody:
+        description: Provide all the details of donated product as per its schema which includes name, email, category, title, description of the product and its image
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/definitions/DonatedProducts'
+            example:
+              name: "john"
+              email: "john@example.com"
+              dcat: "formal"
+              dtitle: "Donating my formal wear"
+              ddesc: "Have been wearing this formal suit for 3 years. As I just purchased a new suit, this is of no use to me and I wish to donate it so that Fasho.Live can make a better use of it."
+              file:
+                externalValue: 'https://hips.hearstapps.com/esq.h-cdn.co/assets/cm/15/06/1024x512/54d462b7544be_-_share-ldrgnp.jpg?resize=480:*'
+      responses:
+        "200":
+          description: "Product received for donation successfully"
+        "400":
+          description: "Error sending the request. Please refer the schema & follow it."
+
+definitions:
+  DonatedProducts:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        required : true
+      email:
+        type: "string"
+        required : true
+      dcat:
+        type: "string"
+        required : true
+        enum:
+          - apparel
+          - footwear
+          - sportswear
+          - cat
+          - trad
+          - formal
+          - acc
+          - cosmetics
+          - luggage
+          - waj
+      dtitle:
+        type: "string"
+        required : true
+      ddesc:
+        type: "string"
+        required : false
+      file:
+        type: "string"
+        format : base64

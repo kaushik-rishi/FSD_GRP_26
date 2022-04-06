@@ -9,7 +9,14 @@ import multer from 'multer';
 import path from 'path'
 import morgan from "morgan";
 import fsr from "file-stream-rotator";
+import connectDonDB from './config/dondb.js';
 
+import YAML from "yamljs";
+import swaggerUI from "swagger-ui-express";
+
+const swaggerJSDocs = YAML.load("./backend/donationAPI.yaml");
+
+connectDonDB()
 // const __dirname = path.join('backend','static','public') ;
 const __dirname = path.join('backend') ;
 // __dirname = __dirname + '/backend'
@@ -66,10 +73,10 @@ app.get("/dnations", function (request, response) {
   return 
 })
 
-let csrfProtect = csrf({ cookie: true })
+// let csrfProtect = csrf({ cookie: true })
 // parse cookies
 // we need this because "cookie" is true in csrfProtection
-app.use(cookieParser())
+// app.use(cookieParser())
 
 // app.get('/getCSRFToken', csrfProtect, (req, res) => {
 //   res.json({ csrfToken: req.csrfToken() });
@@ -91,7 +98,6 @@ const upload = multer({
 });
 
 app.post("/dnations",  upload.single("file"), 
-// csrfProtect, 
 function (request, response) {
 	let uname = request.body.name;
 	let email = request.body.email;
@@ -145,6 +151,8 @@ function (request, response) {
 	response.status(200).json("donation uploaded");
 	return;
 });
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
 
 app.get("/recycle", function (request, response) {
   var obj = JSON.parse(fs.readFileSync('./backend/data/recycle.json'));

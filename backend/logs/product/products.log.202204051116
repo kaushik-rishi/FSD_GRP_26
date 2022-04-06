@@ -1,7 +1,0 @@
-::1 Tue Apr 05 2022 11:16:34 GMT+0530 (India Standard Time) GET /api-docs/ 11.402 ms
-::1 Tue Apr 05 2022 11:16:34 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui.css 9.953 ms
-::ffff:127.0.0.1 Tue Apr 05 2022 11:16:34 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-bundle.js 11.100 ms
-::1 Tue Apr 05 2022 11:16:34 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-standalone-preset.js 5.240 ms
-::1 Tue Apr 05 2022 11:16:34 GMT+0530 (India Standard Time) GET /api-docs/swagger-ui-init.js 1.569 ms
-::1 Tue Apr 05 2022 11:16:35 GMT+0530 (India Standard Time) GET /api-docs/favicon-32x32.png 1.324 ms
-::1 Tue Apr 05 2022 11:16:49 GMT+0530 (India Standard Time) POST /api/users/login/ 714.872 ms
