@@ -12,7 +12,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import YAML from "yamljs";
 import swaggerUI from "swagger-ui-express";
 
-const swaggerJSDocs = YAML.load("./backend/api.yaml");
+const swaggerJSDocs = YAML.load("./api.yaml");
 
 dotenv.config();
 
@@ -75,16 +75,11 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs));
 
 const __dirname = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "/frontend/build")));
-	app.get("*", (req, res) =>
-		res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-	);
-} else {
-	app.get("/", (req, res) => {
-		res.send("API is Runn....");
-	});
-}
+console.log(path.join(__dirname, "/build"))
+app.use(express.static(path.join(__dirname, "/build")));
+app.get("*", (req, res) =>
+	res.sendFile(path.resolve(__dirname, "build", "index.html"))
+);
 
 app.use(notFound);
 app.use(errorHandler);
