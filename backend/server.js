@@ -12,7 +12,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import YAML from "yamljs";
 import swaggerUI from "swagger-ui-express";
 
-const swaggerJSDocs = YAML.load("./backend/api.yaml");
+const swaggerJSDocs = YAML.load("./api.yaml");
 
 dotenv.config();
 
