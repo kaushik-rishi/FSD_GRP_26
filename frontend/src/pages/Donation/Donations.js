@@ -55,7 +55,7 @@ const GetDonations = ({history}) => {
           </Helmet>
           <div>
               <div className='dsect'>
-                <h1>Reuable products 🔄</h1>
+                <h1>Reuable products! 🔄</h1>
                 <p>Here is the list of products we are going to acquire from our generous donors. We'll be refurbishing the products on receiving them in a week's duration and make them available for resale after clearing all the technicalities.</p>  
                 <br />
                 <PaginatedTable2 productRows={donateProds}/>
