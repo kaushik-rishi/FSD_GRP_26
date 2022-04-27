@@ -61,7 +61,7 @@ const GetDonations = ({history}) => {
                 <PaginatedTable2 productRows={donateProds}/>
               </div>
               <div className='dsect'>
-                <h1>Recycle work in progress 🚧</h1>
+                <h1>Recycle work in progress! 🚧</h1>
                 <p>Here are the products received from our donors that will be recycled with the help of our team and made available for purchase.</p>
                 {/* <CardPro/> */}
                 {/* {recData && console.log(recData)} */}

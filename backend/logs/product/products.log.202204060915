@@ -1,4 +1,0 @@
-::ffff:127.0.0.1 Wed Apr 06 2022 09:15:07 GMT+0530 (India Standard Time) POST /api/products/ 722.047 ms
-::ffff:127.0.0.1 Wed Apr 06 2022 09:15:07 GMT+0530 (India Standard Time) GET /api/products/624d0cc25cf630526c3ecf08 494.161 ms
-::ffff:127.0.0.1 Wed Apr 06 2022 09:15:21 GMT+0530 (India Standard Time) GET /api/products?keyword= 314.133 ms
-::ffff:127.0.0.1 Wed Apr 06 2022 09:15:27 GMT+0530 (India Standard Time) GET /api/users 879.481 ms
